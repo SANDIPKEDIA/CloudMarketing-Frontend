@@ -8,10 +8,14 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 
 
 
+
+
+
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
+    
      
     {
       path: 'dashboard',
@@ -30,6 +34,11 @@ const routes: Routes = [{
       path: 'forms',
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.UIFormsModule),
+    },
+    {
+      path: 'customer',
+      loadChildren: () => import('./customer/forms.module')
+        .then(m => m.UICusModule),
     },
     {
       path: 'ui-features',
