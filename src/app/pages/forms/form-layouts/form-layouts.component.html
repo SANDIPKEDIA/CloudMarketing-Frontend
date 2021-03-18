@@ -52,17 +52,17 @@
     </nb-card>
 
     <nb-card>
-      <nb-card-header>Form without labels</nb-card-header>
+      <nb-card-header>Form without labels shashwat</nb-card-header>
       <nb-card-body>
-        <form>
+        <form [formGroup]="form" (ngSubmit)="submit(form)" class="editform-ui">
           <div class="form-group">
-            <input type="text" nbInput fullWidth placeholder="Recipients">
+            <input type="text" formControlName="name" nbInput fullWidth placeholder="Recipients">
           </div>
           <div class="form-group">
-            <input type="text" nbInput fullWidth placeholder="Subject">
+            <input type="text" formControlName="code" nbInput fullWidth placeholder="Subject">
           </div>
           <div class="form-group">
-            <textarea nbInput placeholder="Message"></textarea>
+            <textarea nbInput formControlName="description" placeholder="Message"></textarea>
           </div>
           <button type="submit" nbButton status="success">Send</button>
         </form>

@@ -1,4 +1,8 @@
+
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 import {
   NbActionsModule,
   NbButtonModule,
@@ -18,7 +22,7 @@ import { FormInputsComponent } from './form-inputs/form-inputs.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
-import { FormsModule as ngFormsModule } from '@angular/forms';
+// import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -34,7 +38,9 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     FormsRoutingModule,
     NbSelectModule,
     NbIconModule,
-    ngFormsModule,
+    FormsModule, 
+    ReactiveFormsModule
+    // ngFormsModule,
   ],
   declarations: [
     FormsComponent,
@@ -44,4 +50,4 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     DatepickerComponent,
   ],
 })
-export class FormsModule { }
+export class UIFormsModule { }
