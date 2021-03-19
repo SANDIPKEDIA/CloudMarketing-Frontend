@@ -11,10 +11,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         
         link: '/pages/customer/layouts',
       },
-      {
-        title: 'Customer List',
-        link: '/pages/customer/list',
-      },
+      // {
+      //   title: 'Customer List',
+      //   link: '/pages/customer/list',
+      // },
     ],
   },
   {

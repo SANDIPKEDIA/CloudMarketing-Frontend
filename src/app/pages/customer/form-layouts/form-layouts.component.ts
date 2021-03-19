@@ -9,7 +9,7 @@ import { UsersService } from '../../../users.service';
 })
 export class FormLayoutsComponent {
 
-
+  public customerList=[];
   myReactiveForm: FormGroup;
 
   constructor(
@@ -39,15 +39,13 @@ export class FormLayoutsComponent {
     
     });
   }
-
-getCustomer() {
+  getCustomer() {
     this.user.getCustomer().subscribe((result) => {
       console.log("Customer result", result);
-      
+      this.customerList = result["response"];
     });
   }
-
-
+  
 }
   
 
