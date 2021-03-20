@@ -7,14 +7,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'edit-2-outline',
     children: [
       {
-        title: 'Customer Creation',
+        title: 'Add Customer',
         
         link: '/pages/customer/layouts',
       },
-      // {
-      //   title: 'Customer List',
-      //   link: '/pages/customer/list',
-      // },
+      {
+        title: 'Customer List',
+        link: '/pages/customer/list',
+      },
     ],
   },
   {
