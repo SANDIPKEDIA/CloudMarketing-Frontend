@@ -41,6 +41,11 @@ const routes: Routes = [{
         .then(m => m.UICusModule),
     },
     {
+      path: 'messagemanagement',
+      loadChildren: () => import('./messagemanagement/forms.module')
+        .then(m => m.UIMsgModule),
+    },
+    {
       path: 'ui-features',
       loadChildren: () => import('./ui-features/ui-features.module')
         .then(m => m.UiFeaturesModule),

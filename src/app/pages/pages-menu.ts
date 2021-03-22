@@ -18,6 +18,18 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Message Management',
+    icon: 'edit-2-outline',
+    children: [
+      {
+        title: 'Send Promotional Message',
+        
+        link: '/pages/messagemanagement/layouts',
+      },
+      
+    ],
+  },
+  {
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',
