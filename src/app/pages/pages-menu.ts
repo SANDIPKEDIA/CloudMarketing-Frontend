@@ -4,7 +4,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
 
   {
     title: 'Customer',
-    icon: 'edit-2-outline',
+    icon: 'person-outline',
     children: [
       {
         title: 'Add Customer',
@@ -17,14 +17,52 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+
   {
     title: 'Message Management',
-    icon: 'edit-2-outline',
+    icon: 'message-circle-outline',
     children: [
       {
         title: 'Send Promotional Message',
         
         link: '/pages/messagemanagement/layouts',
+      },
+      
+    ],
+  },
+
+
+  {
+    title: 'Email Marketing',
+    icon: 'email-outline',
+    children: [
+      {
+        title: 'Email Campaign',
+        
+        link: '/pages/emailmarketing/layouts',
+      },
+      {
+        title: 'Send Email',
+        link: '/pages/emailmarketing/inputs',
+      },
+      {
+        title: 'Bulk Email',
+        link: '/pages/emailmarketing/buttons',
+      },
+    ],
+  },
+  {
+    title: 'Notification Management',
+    icon: 'bell-outline',
+    children: [
+      {
+        title: 'Send Notification',
+        
+        link: '/pages/notificationmanagement/layouts',
+      },
+      {
+        title: 'Push Notification',
+        link: '/pages/notificationmanagement/buttons',
       },
       
     ],

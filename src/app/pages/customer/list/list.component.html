@@ -1,19 +1,42 @@
-<div class="lists row">
- 
+<!-- <div class="lists row">
+
 
   <div class="col-md-12 col-lg-6 col-xxxl-6">
     <nb-card class="list-card">
-      <nb-card-header>Customer List</nb-card-header>
-      <nb-list>
-        <!-- <nb-list-item *ngFor="let user of users">
-          <nb-user [name]="user.name" [title]="user.title">
-          </nb-user>
-        </nb-list-item> -->
-        <nb-list-item *ngFor="let customer of customerList">
-          <nb-user [name]="customer.fullName" [title]="customer.email" >
-          </nb-user>
-          </nb-list-item>
-      </nb-list>
+      <nb-tabset fullWidth>
+
+        <nb-tab tabTitle="Customers">
+          <nb-list>
+
+            <nb-list-item class="contact"  *ngFor="let customer of customerList">
+              <nb-user [name]="customer.fullName" [title]="customer.email">
+                <nb-icon icon="phone-outline" pack="eva"></nb-icon>
+
+              </nb-user>
+            </nb-list-item>
+          </nb-list>
+        </nb-tab>
+        </nb-tabset>
     </nb-card>
   </div>
-</div>
+</div> -->
+
+
+
+
+
+<nb-card size="list-card">
+  <nb-tabset fullWidth>
+
+    <nb-tab tabTitle="Customers">
+      <nb-list>
+        <nb-list-item class="contact" *ngFor="let customer of customerList">
+          <nb-user  [name]="customer.fullName" [title]="customer.email" size="medium"></nb-user>
+          <nb-icon icon="phone-outline" pack="eva"></nb-icon>
+        </nb-list-item>
+      </nb-list>
+    </nb-tab>
+    </nb-tabset>
+    </nb-card>
+  
+<!-- [picture]="c.user.picture" -->

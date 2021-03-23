@@ -29,6 +29,12 @@ export class UsersService {
     let url=this.baseUrl + "/api/v1/sendmessage/"+body
     return this.http.get(url,body);
   }
+  Login(body){
+
+    let url="localhost:5000/api/v1/sendmessage/"+body
+    return this.http.post(url,body);
+
+  }
   
 
 }

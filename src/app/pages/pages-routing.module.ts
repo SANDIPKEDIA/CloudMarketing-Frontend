@@ -46,6 +46,16 @@ const routes: Routes = [{
         .then(m => m.UIMsgModule),
     },
     {
+      path: 'emailmarketing',
+      loadChildren: () => import('./emailmarketing/forms.module')
+        .then(m => m.UIEmailModule),
+    },
+    {
+      path: 'notificationmanagement',
+      loadChildren: () => import('./notificationmanagement/forms.module')
+        .then(m => m.UINotificationModule),
+    },
+    {
       path: 'ui-features',
       loadChildren: () => import('./ui-features/ui-features.module')
         .then(m => m.UiFeaturesModule),
