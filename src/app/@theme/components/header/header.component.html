@@ -5,9 +5,10 @@
     </a>
     <a class="logo" href="#" (click)="navigateHome()">Cloud Marketing<span>&nbsp;Tool</span></a>
   </div>
-  <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
+  <nb-select style="margin-left: 600px;" [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
     <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
   </nb-select>
+  <!-- {{currentTheme}} -->
 </div>
 
 <div class="header-container">

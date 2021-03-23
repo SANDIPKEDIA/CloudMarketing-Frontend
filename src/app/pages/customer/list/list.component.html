@@ -1,27 +1,66 @@
-<!-- <div class="lists row">
+ 
 
 
-  <div class="col-md-12 col-lg-6 col-xxxl-6">
-    <nb-card class="list-card">
-      <nb-tabset fullWidth>
+<h1 id="title" class="title">Login</h1>
+<p class="sub-title">shashwat Hello! Log in with your email.</p>
 
-        <nb-tab tabTitle="Customers">
-          <nb-list>
+ 
 
-            <nb-list-item class="contact"  *ngFor="let customer of customerList">
-              <nb-user [name]="customer.fullName" [title]="customer.email">
-                <nb-icon icon="phone-outline" pack="eva"></nb-icon>
+<form (ngSubmit)="login()" #form="ngForm" aria-labelledby="title">
 
-              </nb-user>
-            </nb-list-item>
-          </nb-list>
-        </nb-tab>
-        </nb-tabset>
-    </nb-card>
+  <div class="form-control-group">
+    <label class="label" for="input-email">Email address:</label>
+    <input nbInput
+           fullWidth
+           [(ngModel)]="userObj.email"
+           #email="ngModel"
+           name="email"
+           id="input-email"
+           pattern=".+@.+\..+"
+           placeholder="Email address"
+           fieldSize="large"
+           autofocus
+           >
+    
   </div>
-</div> -->
 
+  <div class="form-control-group">
+    <span class="label-with-link">
+      <label class="label" for="input-password">Password:</label>
+      <a class="forgot-password caption-2" routerLink="../request-password">Forgot Password?</a>
+    </span>
+    <input nbInput
+           fullWidth
+           [(ngModel)]="userObj.password"
+           #password="ngModel"
+           name="password"
+           type="password"
+           id="input-password"
+           placeholder="Password"
+           fieldSize="large"
+           [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : 'basic'"
+            
+           [attr.aria-invalid]="password.invalid && password.touched ? true : null">
+     
+  </div>
 
+ 
+
+  <button nbButton
+          fullWidth
+          status="primary"
+          size="large"
+          [disabled]="submitted || !form.valid"
+          [class.btn-pulse]="submitted">
+    Log In
+  </button>
+</form>
+
+ 
+
+<section class="another-action" aria-label="Register">
+  Don't have an account? <a class="text-link" routerLink="../register">Register</a>
+</section>
 
 
 

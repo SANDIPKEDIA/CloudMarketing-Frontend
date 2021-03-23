@@ -15,6 +15,10 @@ export class ListComponent {
     private user: UsersService,
   ) {}
 
+  public userObj={
+    email:'',
+    password:''
+  }
 
   ngOnInit() {
     this.getCustomer();
