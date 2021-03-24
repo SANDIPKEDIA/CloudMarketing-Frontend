@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FormsComponent } from './forms.component';
-import { FormInputsComponent } from './form-inputs/form-inputs.component';
-import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
+import { EmailCampaignComponent } from './email-campaign/email-campaign.component';
+import { SendEmailsComponent } from './send-emails/send-emails.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
-import { ButtonsComponent } from './buttons/buttons.component';
+import { BulkEmailComponent } from './bulk-emails/bulk-emails.component';
 
 const routes: Routes = [
   {
@@ -13,20 +13,17 @@ const routes: Routes = [
     component: FormsComponent,
     children: [
       {
-        path: 'inputs',
-        component: FormInputsComponent,
+        path: 'email-campaign',
+        component: EmailCampaignComponent,
+      },
+  
+      {
+        path: 'send-emails',
+        component: SendEmailsComponent,
       },
       {
-        path: 'layouts',
-        component: FormLayoutsComponent,
-      },
-      {
-        path: 'layouts',
-        component: FormLayoutsComponent,
-      },
-      {
-        path: 'buttons',
-        component: ButtonsComponent,
+        path: 'bulk-emails',
+        component: BulkEmailComponent,
       },
       {
         path: 'datepicker',

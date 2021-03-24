@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { fruits } from './fruits-list';
+
 import { UsersService } from '../../../users.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LocalDataFactory } from '@akveo/ng2-completer';
@@ -23,15 +23,11 @@ export class ListComponent {
   }
 
   ngOnInit() {
-    // this.getCustomer();
+  
 
 
     this.myReactiveForm = new FormGroup({
-      // id:new FormControl(''),
-      // fullName: new FormControl(''),
-      // email:new FormControl(''),
-      // mobile: new FormControl(''),
-      // address: new FormControl(''),
+     
       email: new FormControl(''),
       password: new FormControl(''),
 
@@ -39,12 +35,7 @@ export class ListComponent {
     });
   }
 
-  // getCustomer() {
-  //   this.user.getCustomer().subscribe((result) => {
-  //     console.log("Customer result", result);
-  //     this.customerList = result["response"];
-  //   });
-  // }
+  
 
   login() {
     this.user.Login(this.myReactiveForm.value).subscribe((result) => {

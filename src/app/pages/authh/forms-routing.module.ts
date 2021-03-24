@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FormsComponent } from './forms.component';
-import { PushNotificationComponent } from './push-notification/push-notification.component';
-import { SendNotificationComponent } from './send-notifications/send-notifications.component';
+import { FormInputsComponent } from './form-inputs/form-inputs.component';
+import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
+import { ListComponent } from '../authh/list/list.component';
 
 const routes: Routes = [
   {
@@ -13,14 +14,18 @@ const routes: Routes = [
     component: FormsComponent,
     children: [
       {
-        path: 'push-notification',
-        component: PushNotificationComponent,
+        path: 'reset',
+        component: FormInputsComponent,
       },
       {
-        path: 'send-notifications',
-        component: SendNotificationComponent,
+        path: 'register',
+        component: FormLayoutsComponent,
       },
       
+      {
+        path: 'login',
+        component: ListComponent,
+      },
       {
         path: 'buttons',
         component: ButtonsComponent,

@@ -9,11 +9,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Add Customer',
         
-        link: '/pages/customer/layouts',
+        link: '/pages/customer/add-customer',
       },
       {
         title: 'Customer List',
-        link: '/pages/customer/list',
+        link: '/pages/customer/customer-list',
       },
     ],
   },
@@ -25,7 +25,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Send Promotional Message',
         
-        link: '/pages/messagemanagement/layouts',
+        link: '/pages/messagemanagement/send-messages',
       },
       
     ],
@@ -39,15 +39,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Email Campaign',
         
-        link: '/pages/emailmarketing/layouts',
+        link: '/pages/emailmarketing/email-campaign',
       },
       {
         title: 'Send Email',
-        link: '/pages/emailmarketing/inputs',
+        link: '/pages/emailmarketing/send-emails',
       },
       {
         title: 'Bulk Email',
-        link: '/pages/emailmarketing/buttons',
+        link: '/pages/emailmarketing/bulk-emails',
       },
     ],
   },
@@ -58,15 +58,31 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Send Notification',
         
-        link: '/pages/notificationmanagement/layouts',
+        link: '/pages/notificationmanagement/send-notifications',
       },
       {
         title: 'Push Notification',
-        link: '/pages/notificationmanagement/buttons',
+        link: '/pages/notificationmanagement/push-notification',
       },
       
     ],
   },
+  // {
+  //   title: 'Auth',
+  //   icon: 'bell-outline',
+  //   children: [
+  //     {
+  //       title: 'Register',
+        
+  //       link: '/pages/auth/layouts',
+  //     },
+  //     {
+  //       title: 'Forgot Password',
+  //       link: '/pages/auth/inputs',
+  //     },
+      
+  //   ],
+  // },
   // {
   //   title: 'E-commerce',
   //   icon: 'shopping-cart-outline',

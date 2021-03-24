@@ -22,13 +22,12 @@ import {
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { FormsRoutingModule } from './forms-routing.module';
-// import { AddCusComponent } from './customer-list/customer-list.component';
+import { ListComponent } from '../authh/list/list.component';
 import { FormsComponent } from './forms.component';
 import { FormInputsComponent } from './form-inputs/form-inputs.component';
-import { AddCusComponent } from './add-customer/add-customer.component';
+import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
-import { CusListomponent } from './customer-list/customer-list.component';
 // import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -56,11 +55,11 @@ import { CusListomponent } from './customer-list/customer-list.component';
   ],
   declarations: [
     FormsComponent,
-    AddCusComponent,
+    ListComponent,
     ButtonsComponent,
     FormInputsComponent,
-    CusListomponent,
+    FormLayoutsComponent,
     DatepickerComponent,
   ],
 })
-export class UICusModule { }
+export class UIAuthhModule { }

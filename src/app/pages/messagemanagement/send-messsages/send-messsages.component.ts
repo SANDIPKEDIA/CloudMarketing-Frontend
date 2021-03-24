@@ -12,11 +12,11 @@ import {
 
 
 @Component({
-  selector: 'ngx-form-layouts',
-  styleUrls: ['./form-layouts.component.scss'],
-  templateUrl: './form-layouts.component.html',
+  selector: 'ngx-send-messsages',
+  styleUrls: ['./send-messsages.component.scss'],
+  templateUrl: './send-messsages.component.html',
 })
-export class FormLayoutsComponent {
+export class SendMsgComponent {
 
   public customerList=[];
   myReactiveForm: FormGroup;

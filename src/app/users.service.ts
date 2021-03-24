@@ -8,8 +8,10 @@ import { environment } from "../environments/environment";
 export class UsersService {
 
   public baseUrl=''
+  public baseUrl2=''
   constructor(private http:HttpClient) { 
     this.baseUrl = environment.baseUrl;
+    this.baseUrl2 = environment.baseUrl2;
   }
 
   getCustomer()
@@ -31,7 +33,13 @@ export class UsersService {
   }
   Login(body){
 
-    let url=this.baseUrl + "/api/v1/admin/loginAdmin"
+    let url=this.baseUrl2 + "/api/v1/admin/loginAdmin"
+    return this.http.post(url,body);
+
+  }
+  Email(body){
+
+    let url=this.baseUrl + "/api/v1/sendemail/"+body
     return this.http.post(url,body);
 
   }

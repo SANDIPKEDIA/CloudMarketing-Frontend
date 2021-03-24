@@ -18,10 +18,10 @@ import {
 import { ThemeModule } from '../../@theme/theme.module';
 import { FormsRoutingModule } from './forms-routing.module';
 import { FormsComponent } from './forms.component';
-import { FormInputsComponent } from './form-inputs/form-inputs.component';
-import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
+import { EmailCampaignComponent } from './email-campaign/email-campaign.component';
+import { SendEmailsComponent } from './send-emails/send-emails.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
-import { ButtonsComponent } from './buttons/buttons.component';
+import { BulkEmailComponent } from './bulk-emails/bulk-emails.component';
 // import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -44,9 +44,9 @@ import { ButtonsComponent } from './buttons/buttons.component';
   ],
   declarations: [
     FormsComponent,
-    ButtonsComponent,
-    FormInputsComponent,
-    FormLayoutsComponent,
+    BulkEmailComponent,
+    EmailCampaignComponent,
+    SendEmailsComponent,
     DatepickerComponent,
   ],
 })

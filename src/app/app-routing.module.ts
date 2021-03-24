@@ -10,7 +10,9 @@ import {
   NbResetPasswordComponent,
 } from '@nebular/auth';
 
-import { ListComponent } from "../app/pages/customer/list/list.component";
+import { ListComponent } from "../app/pages/authh/list/list.component";
+import { FormLayoutsComponent } from './pages/authh/form-layouts/form-layouts.component';
+import { FormInputsComponent } from './pages/authh/form-inputs/form-inputs.component';
 export const routes: Routes = [
   {
     path: 'pages',
@@ -31,19 +33,19 @@ export const routes: Routes = [
       },
       {
         path: 'register',
-        component: NbRegisterComponent,
+        component: FormLayoutsComponent,
       },
+      // {
+      //   path: 'logout',
+      //   component: NbLogoutComponent,
+      // },
+      // {
+      //   path: 'request-password',
+      //   component: NbRequestPasswordComponent,
+      // },
       {
-        path: 'logout',
-        component: NbLogoutComponent,
-      },
-      {
-        path: 'request-password',
-        component: NbRequestPasswordComponent,
-      },
-      {
-        path: 'reset-password',
-        component: NbResetPasswordComponent,
+        path: 'reset',
+        component: FormInputsComponent,
       },
     ],
   },

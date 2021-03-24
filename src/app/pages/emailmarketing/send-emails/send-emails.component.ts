@@ -12,11 +12,11 @@ import {
 
 
 @Component({
-  selector: 'ngx-form-layouts',
-  styleUrls: ['./form-layouts.component.scss'],
-  templateUrl: './form-layouts.component.html',
+  selector: 'ngx-send-emails',
+  styleUrls: ['./send-emails.component.scss'],
+  templateUrl: './send-emails.component.html',
 })
-export class FormLayoutsComponent {
+export class SendEmailsComponent {
 
   public customerList=[];
   myReactiveForm: FormGroup;
@@ -31,7 +31,7 @@ export class FormLayoutsComponent {
 
 
     this.myReactiveForm = new FormGroup({
-      number: new FormControl(''),
+      email: new FormControl(''),
       description:new FormControl(''),
     
   
@@ -40,10 +40,10 @@ export class FormLayoutsComponent {
   }
 
   onSubmit(body) {
-    let number = this.myReactiveForm.get("number").value;
-    this.user.Message(number).subscribe((data) => {
+    let email = this.myReactiveForm.get("email").value;
+    this.user.Email(email).subscribe((data) => {
       this.myReactiveForm.reset();
-      console.log(number);
+      console.log(email);
 
    
 

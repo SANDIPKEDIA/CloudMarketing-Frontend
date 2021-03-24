@@ -1,0 +1,19 @@
+
+
+
+
+<nb-card size="list-card">
+  <nb-tabset fullWidth>
+
+    <nb-tab tabTitle="Customers">
+      <nb-list>
+        <nb-list-item class="contact" *ngFor="let customer of customerList">
+          <nb-user  [name]="customer.fullName" [title]="customer.email" size="medium"></nb-user>
+          <nb-icon icon="phone-outline" pack="eva"></nb-icon>
+        </nb-list-item>
+      </nb-list>
+    </nb-tab>
+    </nb-tabset>
+    </nb-card>
+  
+<!-- [picture]="c.user.picture" -->
