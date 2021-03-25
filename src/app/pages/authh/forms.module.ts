@@ -22,10 +22,10 @@ import {
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { FormsRoutingModule } from './forms-routing.module';
-import { ListComponent } from '../authh/list/list.component';
+import { LoginComponent } from './login/login.component';
 import { FormsComponent } from './forms.component';
-import { FormInputsComponent } from './form-inputs/form-inputs.component';
-import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
+import { ForgotPasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetPasswordComponent } from './resetpassword/resetpassword.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 // import { FormsModule as ngFormsModule } from '@angular/forms';
@@ -55,10 +55,10 @@ import { ButtonsComponent } from './buttons/buttons.component';
   ],
   declarations: [
     FormsComponent,
-    ListComponent,
+    LoginComponent,
     ButtonsComponent,
-    FormInputsComponent,
-    FormLayoutsComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
     DatepickerComponent,
   ],
 })

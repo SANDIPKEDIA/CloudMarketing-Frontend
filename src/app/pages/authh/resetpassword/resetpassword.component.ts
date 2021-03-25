@@ -12,11 +12,11 @@ import {
 
 
 @Component({
-  selector: 'ngx-form-layouts',
-  styleUrls: ['./form-layouts.component.scss'],
-  templateUrl: './form-layouts.component.html',
+  selector: 'ngx-resetpassword',
+  styleUrls: ['./resetpassword.component.scss'],
+  templateUrl: './resetpassword.component.html',
 })
-export class FormLayoutsComponent {
+export class ResetPasswordComponent {
 
   public customerList=[];
   myReactiveForm: FormGroup;

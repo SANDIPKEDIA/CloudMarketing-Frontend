@@ -6,13 +6,14 @@ import { LocalDataFactory } from '@akveo/ng2-completer';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'ngx-list',
-  templateUrl: 'list.component.html',
-  styleUrls: ['list.component.scss'],
+  selector: 'ngx-login',
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.scss'],
 })
-export class ListComponent {
+export class LoginComponent {
   public customerList = [];
   myReactiveForm: FormGroup;
+  local =""
   constructor(
     private user: UsersService,private route: ActivatedRoute, private router: Router
   ) { }
@@ -27,9 +28,10 @@ export class ListComponent {
 
 
     this.myReactiveForm = new FormGroup({
-     
       email: new FormControl(''),
       password: new FormControl(''),
+    
+
 
 
     });
@@ -38,10 +40,28 @@ export class ListComponent {
   
 
   login() {
+    let email = this.myReactiveForm.get("email").value;
+  
     this.user.Login(this.myReactiveForm.value).subscribe((result) => {
       console.log("Customer result", result);
       this.myReactiveForm.reset();
       this.onNavigateClick()
+      let details = result["response"];
+      
+      let Image = details.AdminDetails.Image;
+      let Name = details.AdminDetails.fullName;
+      let Id = details.AdminDetails._id;
+      
+      
+      
+      localStorage.setItem('AuthToken', JSON.stringify(details.authToken));
+      localStorage.setItem('Admin-Id', JSON.stringify(Id));
+      localStorage.setItem('Admin-Image', JSON.stringify(Image));
+      localStorage.setItem('Admin-Name', JSON.stringify(Name));
+
+
+      
+
 
    
     });

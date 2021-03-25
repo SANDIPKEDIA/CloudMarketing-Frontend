@@ -43,6 +43,11 @@ export class UsersService {
     return this.http.post(url,body);
 
   }
+  PushNotification(body)
+  {
+    let url=this.baseUrl + "/api/v1/sendpushnotification/"+body
+    return this.http.post(url,body);
+  }
   
 
 }

@@ -9,8 +9,8 @@
       <nb-card-body>
         <form [formGroup]="myReactiveForm" class="editform-ui">
           <div class="form-group">
-            <nb-select SIZE="large">
-              <nb-option [value]="customer._id" *ngFor="let customer of customerList">{{customer.fullName}}</nb-option>
+            <nb-select fullWidth size="large" placeholder="Name-Number">
+              <nb-option [value]="customer._id" *ngFor="let customer of customerList">{{customer.fullName}}-{{customer.mobile}}</nb-option>
             </nb-select>        
             </div>
           <br>

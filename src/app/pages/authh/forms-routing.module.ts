@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FormsComponent } from './forms.component';
-import { FormInputsComponent } from './form-inputs/form-inputs.component';
-import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
+import { ForgotPasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetPasswordComponent } from './resetpassword/resetpassword.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
-import { ListComponent } from '../authh/list/list.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -14,17 +14,17 @@ const routes: Routes = [
     component: FormsComponent,
     children: [
       {
-        path: 'reset',
-        component: FormInputsComponent,
+        path: 'forgot',
+        component: ForgotPasswordComponent,
       },
       {
-        path: 'register',
-        component: FormLayoutsComponent,
+        path: 'reset',
+        component: ResetPasswordComponent,
       },
       
       {
         path: 'login',
-        component: ListComponent,
+        component: LoginComponent,
       },
       {
         path: 'buttons',

@@ -16,6 +16,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   user: any;
+  public Auth_Token;
+  public Admin_Id;
+  public Admin_Name;
+  public Admin_Image;  
 
   themes = [
     {
@@ -34,7 +38,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     //   value: 'default',
     //   name: 'Light',
     // },
-    
+
     {
       value: 'corporate',
       name: 'Corporate',
@@ -43,17 +47,34 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
 
   constructor(private sidebarService: NbSidebarService,
-              private menuService: NbMenuService,
-              private themeService: NbThemeService,
-              private userService: UserData,
-              private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService) {
+    private menuService: NbMenuService,
+    private themeService: NbThemeService,
+    private userService: UserData,
+    private layoutService: LayoutService,
+    private breakpointService: NbMediaBreakpointsService) {
   }
 
   ngOnInit() {
+
+     this.Auth_Token = JSON.parse(localStorage.getItem('AuthToken'));
+
+     this.Admin_Id = JSON.parse(localStorage.getItem('Admin-Id'));
+
+    this.Admin_Name = JSON.parse(localStorage.getItem('Admin-Name'));
+
+     this.Admin_Image = JSON.parse(localStorage.getItem('Admin-Image'));
+
+    console.log("Token",this.Auth_Token);
+    console.log("Id", this.Admin_Id);
+    console.log("Image",this.Admin_Image);
+    console.log("Name", this.Admin_Name);
+
+
+
+
     this.currentTheme = this.themeService.currentTheme;
 
     this.userService.getUsers()
@@ -75,7 +96,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
       .subscribe(themeName => this.currentTheme = themeName);
 
-      this.changeTheme('cosmic');
+    this.changeTheme('cosmic');
   }
 
   ngOnDestroy() {
