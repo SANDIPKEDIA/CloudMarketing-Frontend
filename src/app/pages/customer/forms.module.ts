@@ -1,6 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 import {
@@ -33,6 +34,7 @@ import { CusListomponent } from './customer-list/customer-list.component';
 
 @NgModule({
   imports: [
+    
     ThemeModule,
     NbAccordionModule,
     NbRouteTabsetModule,
@@ -51,8 +53,9 @@ import { CusListomponent } from './customer-list/customer-list.component';
     NbSelectModule,
     NbIconModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
     // ngFormsModule,
+    Ng2SmartTableModule
   ],
   declarations: [
     FormsComponent,

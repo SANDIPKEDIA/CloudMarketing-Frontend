@@ -1,6 +1,6 @@
 
-
-
+<!-- 
+<div class="col-md-12 col-lg-6 col-xxxl-6">
 
 <nb-card size="list-card">
   <nb-tabset fullWidth>
@@ -8,12 +8,24 @@
     <nb-tab tabTitle="Customers">
       <nb-list>
         <nb-list-item class="contact" *ngFor="let customer of customerList">
-          <nb-user  [name]="customer.fullName" [title]="customer.email" size="medium"></nb-user>
+          <nb-user  [name]="customer.fullName" [title]="customer.email" size="small"></nb-user>
           <nb-icon icon="phone-outline" pack="eva"></nb-icon>
         </nb-list-item>
       </nb-list>
     </nb-tab>
     </nb-tabset>
     </nb-card>
+  </div> -->
   
 <!-- [picture]="c.user.picture" -->
+
+<nb-card>
+  <nb-card-header>
+    Customer List
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

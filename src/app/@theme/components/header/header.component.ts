@@ -59,13 +59,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-     this.Auth_Token = JSON.parse(localStorage.getItem('AuthToken'));
+     this.Auth_Token = JSON.parse(localStorage.getItem('authToken'));
 
-     this.Admin_Id = JSON.parse(localStorage.getItem('Admin-Id'));
+     this.Admin_Id = JSON.parse(localStorage.getItem('adminId'));
 
-    this.Admin_Name = JSON.parse(localStorage.getItem('Admin-Name'));
+    this.Admin_Name = JSON.parse(localStorage.getItem('adminName'));
 
-     this.Admin_Image = JSON.parse(localStorage.getItem('Admin-Image'));
+     this.Admin_Image = JSON.parse(localStorage.getItem('adminImage'));
 
     console.log("Token",this.Auth_Token);
     console.log("Id", this.Admin_Id);
@@ -105,7 +105,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   changeTheme(themeName: string) {
-    debugger
+   
     this.themeService.changeTheme(themeName);
   }
 

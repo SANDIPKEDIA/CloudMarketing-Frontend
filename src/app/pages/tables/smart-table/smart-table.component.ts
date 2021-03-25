@@ -57,6 +57,7 @@ export class SmartTableComponent {
 
   constructor(private service: SmartTableData) {
     const data = this.service.getData();
+    debugger
     this.source.load(data);
   }
 
