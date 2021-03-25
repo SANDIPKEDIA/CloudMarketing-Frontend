@@ -27,6 +27,7 @@ export class CusListomponent {
 
   ngOnInit() {
     this.getCustomer();
+    
 
 
     this.myReactiveForm = new FormGroup({
@@ -44,12 +45,20 @@ export class CusListomponent {
   getCustomer() {
     this.user.getCustomer().subscribe((result) => {
       console.log("Customer result", result);
-      this.customerList = result["response"];
-      debugger
-      // const data = this.service.getData();
-    this.source.load(this.customerList);
+      this.customerList = result["object"]['UserList'];
+      this.source.load(this.customerList);
+      this.getNewCustomer();
     });
   }
+
+  getNewCustomer() {
+    // this.user.getNewCustomer().subscribe((result) => {
+    //   let list = result["response"];
+    //   this.customerList.concat(list);
+    // });
+  }
+
+
 
   //smart
 
@@ -58,7 +67,7 @@ export class CusListomponent {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
-    },
+          },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
@@ -69,10 +78,10 @@ export class CusListomponent {
       confirmDelete: true,
     },
     columns: {
-      _id: {
-        title: 'ID',
-        type: 'number',
-      },
+      // _id: {
+      //   title: 'ID',
+      //   type: 'number',
+      // },
       fullName: {
         title: 'First Name',
         type: 'string',
@@ -88,11 +97,13 @@ export class CusListomponent {
       email: {
         title: 'E-mail',
         type: 'string',
+        filter: false
       },
-      // age: {
-      //   title: 'Age',
-      //   type: 'number',
-      // },
+      address: {
+        title: 'Address',
+        type: 'string',
+        filter: false
+      },
     },
   };
 
@@ -101,11 +112,7 @@ export class CusListomponent {
   
 
   onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
+    console.log(event,"event")
   }
 
 

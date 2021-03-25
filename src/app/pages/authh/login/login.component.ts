@@ -45,21 +45,19 @@ export class LoginComponent {
     this.user.Login(this.myReactiveForm.value).subscribe((result) => {
       console.log("Customer result", result);
       this.myReactiveForm.reset();
-      this.onNavigateClick()
       let details = result["object"];
       
-      debugger
-
+      
       let Image = details.AdminDetails.Image;
       let Name = details.AdminDetails.fullName;
       let Id = details.AdminDetails._id;
       
-      debugger
       
       localStorage.setItem('authToken', JSON.stringify(details.authToken));
       localStorage.setItem('adminId', JSON.stringify(Id));
       localStorage.setItem('adminImage', JSON.stringify(Image));
       localStorage.setItem('adminName', JSON.stringify(Name));
+      this.onNavigateClick()
 
 
       
