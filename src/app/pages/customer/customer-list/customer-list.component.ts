@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
+// import { debug } from 'console';
 
 @Component({
   selector: 'ngx-customer-list',
@@ -14,7 +15,10 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 })
 export class CusListomponent {
   public customerList = [];
+  public list = [];
+  public allList = [];
   source: LocalDataSource = new LocalDataSource();
+  public event =''
   myReactiveForm: FormGroup;
   constructor(
     private user: UsersService,private route: ActivatedRoute, private router: Router,private service: SmartTableData
@@ -27,6 +31,8 @@ export class CusListomponent {
 
   ngOnInit() {
     this.getCustomer();
+    
+
     
 
 
@@ -47,15 +53,24 @@ export class CusListomponent {
       console.log("Customer result", result);
       this.customerList = result["object"]['UserList'];
       this.source.load(this.customerList);
+      // this.source.load(this.allList);
       this.getNewCustomer();
+
+      
+      
     });
   }
 
   getNewCustomer() {
-    // this.user.getNewCustomer().subscribe((result) => {
-    //   let list = result["response"];
-    //   this.customerList.concat(list);
-    // });
+    this.user.getNewCustomer().subscribe((result) => {
+       this.list = result["response"];
+      this.allList =  this.customerList.concat(this.list);
+      this.source.load(this.allList);
+        // debugger
+      //  console.log("New Customer Result",this.allList);
+       
+      
+    });
   }
 
 
@@ -67,6 +82,8 @@ export class CusListomponent {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmCreate: true,
+      
           },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
@@ -76,7 +93,15 @@ export class CusListomponent {
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
+     
     },
+    actions: {
+
+      delete: false,
+  
+    
+      
+  },
     columns: {
       // _id: {
       //   title: 'ID',
@@ -97,12 +122,13 @@ export class CusListomponent {
       email: {
         title: 'E-mail',
         type: 'string',
-        filter: false
+        // filter: false
       },
       address: {
         title: 'Address',
         type: 'string',
-        filter: false
+        // filter: false  
+                       
       },
     },
   };
@@ -113,6 +139,20 @@ export class CusListomponent {
 
   onDeleteConfirm(event): void {
     console.log(event,"event")
+  }
+
+  onCreateConfirm() {
+    this.user.saveCustomer(this.myReactiveForm.value).subscribe((data) => {
+      this.myReactiveForm.reset();
+      this.getCustomer();
+     
+      // console.log(event);
+      
+      // this.makeToast();
+
+    
+    });
+   
   }
 
 

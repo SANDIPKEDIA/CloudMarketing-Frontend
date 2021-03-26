@@ -26,7 +26,8 @@
 
   <nb-card-body>
     <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    <ng2-smart-table [settings]="settings" [source]="source"  (createConfirm)="onCreateConfirm()"   (deleteConfirm)="onDeleteConfirm($event)">
     </ng2-smart-table>
   </nb-card-body>
 </nb-card>
+<!-- (createConfirm)="onCreateConfirm(event)" -->

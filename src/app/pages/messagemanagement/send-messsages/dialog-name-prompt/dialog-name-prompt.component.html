@@ -1,0 +1,16 @@
+<nb-card>
+  <nb-card-header>Enter Number</nb-card-header>
+  <!-- <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)" class="editform-ui"> -->
+  <nb-card-body>
+    <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)" class="editform-ui">
+      <div class="form-group">
+        <input type="email" formControlName="number" nbInput fullWidth placeholder="To:">
+      </div>
+  <nb-card-footer>
+    <button class="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
+    <button type="submit" nbButton status="success" >Submit</button>
+  </nb-card-footer>
+</form>
+</nb-card-body>
+</nb-card>
+

@@ -1,64 +1,63 @@
 import { Component } from '@angular/core';
+import { NbComponentStatus, NbDialogRef, NbGlobalPhysicalPosition, NbGlobalPosition, NbToastrConfig, NbToastrService } from '@nebular/theme';
+// import { UsersService } from './users.service';
+
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from '../../../users.service';
-import {
-  NbComponentStatus,
-  NbGlobalLogicalPosition,
-  NbGlobalPhysicalPosition,
-  NbGlobalPosition,
-  NbToastrService,
-  NbToastrConfig,
-} from '@nebular/theme';
+import { UsersService } from '../../../../users.service';
 
 
 @Component({
-  selector: 'ngx-add-customer',
-  styleUrls: ['./add-customer.component.scss'],
-  templateUrl: './add-customer.component.html',
+  selector: 'ngx-dialog-name-prompt',
+  templateUrl: 'dialog-name-prompt.component.html',
+  styleUrls: ['dialog-name-prompt.component.scss'],
 })
-export class AddCusComponent {
+export class DialogNamePromptComponent {
 
-  public customerList=[];
+  public customerList = [];
   myReactiveForm: FormGroup;
+  public list = [];
+  public allList = [];
+  constructor(protected ref: NbDialogRef<DialogNamePromptComponent>,private user: UsersService,private toastrService: NbToastrService) {}
 
-  constructor(
-    private user: UsersService,private toastrService: NbToastrService
-  ) {}
-
-
+ 
   ngOnInit() {
-    this.getCustomer();
-
+    this.getNewCustomer();
 
     this.myReactiveForm = new FormGroup({
-      id:new FormControl(''),
+      id: new FormControl(''),
       fullName: new FormControl(''),
-      email:new FormControl(''),
+      email: new FormControl(''),
       mobile: new FormControl(''),
       address: new FormControl(''),
-  
+      number: new FormControl(''),
+
+
 
     });
   }
 
-  onSubmit() {
-    this.user.saveCustomer(this.myReactiveForm.value).subscribe((data) => {
+
+  onSubmit(body) {
+    let number = this.myReactiveForm.get("number").value;
+    this.user.Message(number).subscribe((data) => {
       this.myReactiveForm.reset();
-      this.getCustomer();
+      console.log(number);
       this.makeToast();
 
-    
-    });
-  }
-  getCustomer() {
-    this.user.getCustomer().subscribe((result) => {
-      console.log("Customer result", result);
-      this.customerList = result["response"];
     });
   }
 
+  getNewCustomer() {
+    this.user.getNewCustomer().subscribe((result) => {
+      this.list = result["response"];
+      // this.customerList.concat(this.list);
+     
+    });
+  }
+  cancel() {
+    this.ref.close();
+  }
 
-  //Toaster
   config: NbToastrConfig;
   destroyByClick = true;
   duration = 2000;
@@ -67,7 +66,7 @@ export class AddCusComponent {
   preventDuplicates = false;
   status: NbComponentStatus = 'success';
 
-  title = 'Customer Added';
+  title = 'Message Send';
   content = `Successfully!`;
 
   types: NbComponentStatus[] = [
@@ -77,15 +76,9 @@ export class AddCusComponent {
   ];
   positions: string[] = [
 
-    NbGlobalPhysicalPosition.TOP_LEFT,
+    NbGlobalPhysicalPosition.TOP_RIGHT,
    
   ];
-
-
-  
-
-
-//Toaster
   makeToast() {
     this.showToast(this.status, this.title,this.content);
   }
@@ -106,9 +99,4 @@ export class AddCusComponent {
       config);
   }
 
-
-  
 }
-  
-
-

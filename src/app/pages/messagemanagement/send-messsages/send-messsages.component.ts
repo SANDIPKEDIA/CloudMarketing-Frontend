@@ -9,6 +9,13 @@ import {
   NbToastrService,
   NbToastrConfig,
 } from '@nebular/theme';
+import { LocalDataSource } from 'ng2-smart-table';
+import { NbDialogService } from '@nebular/theme';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SmartTableData } from '../../../@core/data/smart-table';
+import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt.component';
+// import { DialogNamePromptComponent } from '../../messagemanagement/send-messages/dialog-name-prompt/dialog-name-prompt.component';
+// import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt.component';
 
 
 @Component({
@@ -20,21 +27,26 @@ export class SendMsgComponent {
 
   public customerList=[];
   myReactiveForm: FormGroup;
+  public list = [];
+  public allList = [];
+  source: LocalDataSource = new LocalDataSource();
 
   constructor(
-    private user: UsersService,private toastrService: NbToastrService
+    private user: UsersService,private toastrService: NbToastrService,private route: ActivatedRoute, private router: Router, private service: SmartTableData,private dialogService: NbDialogService
+    
   ) {}
 
-
   ngOnInit() {
-    
-
+    this.getCustomer();
 
     this.myReactiveForm = new FormGroup({
-      number: new FormControl(''),
-      description:new FormControl(''),
-    
-  
+      id: new FormControl(''),
+      fullName: new FormControl(''),
+      email: new FormControl(''),
+      mobile: new FormControl(''),
+      address: new FormControl(''),
+
+
 
     });
   }
@@ -46,10 +58,13 @@ export class SendMsgComponent {
       console.log(number);
       this.makeToast();
 
-   
-
-
     });
+  }
+
+  open3(){
+    this.dialogService.open(DialogNamePromptComponent)
+    // this.onSubmit(body);
+  
   }
 
   //Toaster
@@ -57,7 +72,7 @@ export class SendMsgComponent {
   destroyByClick = true;
   duration = 2000;
   hasIcon = true;
-  position: NbGlobalPosition = NbGlobalPhysicalPosition.TOP_LEFT;
+  position: NbGlobalPosition = NbGlobalPhysicalPosition.TOP_RIGHT;
   preventDuplicates = false;
   status: NbComponentStatus = 'success';
 
@@ -74,6 +89,35 @@ export class SendMsgComponent {
     NbGlobalPhysicalPosition.TOP_LEFT,
    
   ];
+
+  getCustomer() {
+    this.user.getCustomer().subscribe((result) => {
+      console.log("Customer result", result);
+      this.customerList = result["object"]['UserList'];
+      this.source.load(this.customerList);
+      // this.source.load(this.allList);
+      this.getNewCustomer();
+
+      
+      
+    });
+  }
+
+  getNewCustomer() {
+    this.user.getNewCustomer().subscribe((result) => {
+       this.list = result["response"];
+      this.allList =  this.customerList.concat(this.list);
+      this.source.load(this.allList);
+        // debugger
+      //  console.log("New Customer Result",this.allList);
+       
+      
+    });
+  }
+
+
+
+
   //Toaster
   makeToast() {
     this.showToast(this.status, this.title,this.content);
@@ -96,6 +140,93 @@ export class SendMsgComponent {
   }
 
  
+  settings = {
+    
+
+    add: {
+      addButtonContent: '<i class="nb-email"></i>',
+      createButtonContent: '',
+      cancelButtonContent: '',
+      // confirmCreate: true,
+    },
+    edit: {
+      editButtonContent: '<i class="nb-edit"></i>',
+      saveButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+    },
+
+    email: {
+      addButtonContent: '<i class="nb-email"></i>',
+      // confirmDelete: true,
+    },
+    delete: {
+      deleteButtonContent: '<i class="nb-email"></i>',
+      confirmDelete: true,
+    },
+
+    actions: {
+      columnTitle: 'Send Message',
+      add: false,
+      edit: false,
+      content: false,
+      delete:false,
+      defaultStyle: false
+      
+
+
+
+    },
+
+
+
+    columns: {
+      // _id: {
+      //   title: 'ID',
+      //   type: 'number',
+      // },
+      fullName: {
+        title: 'First Name',
+        type: 'string',
+      },
+      // lastName: {
+      //   title: 'Last Name',
+      //   type: 'string',
+      // },
+      mobile: {
+        title: 'Mobile',
+        type: 'number',
+      },
+      email: {
+        title: 'E-mail',
+        type: 'string',
+        // filter: false
+      },
+      address: {
+        title: 'Address',
+        type: 'string',
+        // filter: false                 
+      },
+
+    },
+  };
+
+  onDeleteConfirm(event): void {
+    console.log(event, "event")
+  }
+
+  onCreateConfirm(event): void {
+    this.user.saveCustomer(this.myReactiveForm.value).subscribe((data) => {
+      this.myReactiveForm.reset();
+      // this.getCustomer();
+      // this.makeToast();
+
+
+    });
+
+  }
+
+
+
   
 }
   
