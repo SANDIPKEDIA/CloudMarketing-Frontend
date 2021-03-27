@@ -17,6 +17,7 @@ import {
   NbToastrConfig,
 } from '@nebular/theme';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InfiniteListComponent } from '../../layout/infinite-list/infinite-list.component';
 // import { DialogNamePromptComponent } from '../../modal-overlays/dialog/dialog-name-prompt/dialog-name-prompt.component';
 
 
@@ -99,12 +100,19 @@ getNewCustomer() {
 
   settings = {
     
-
+mode:'internal',
+// addable: false,
+// actions: false,
+// hideSubHeader:true,
     add: {
       addButtonContent: '<i class="nb-email"></i>',
-      createButtonContent: '',
-      cancelButtonContent: '',
-      // confirmCreate: true,
+      // createButtonContent:'hide',
+      // cancelButtonContent: '',
+      // inputClass:'abcd',
+      hideSubFooter:true,
+      
+      confirmCreate: true,
+      
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
@@ -113,7 +121,7 @@ getNewCustomer() {
     },
 
     email: {
-      addButtonContent: '<i class="nb-email"></i>',
+      ButtonContent: '<i class="nb-email"></i>',
       // confirmDelete: true,
     },
     delete: {
@@ -123,16 +131,22 @@ getNewCustomer() {
 
     actions: {
       columnTitle: 'Send Email',
-      add: false,
+     
       edit: false,
-      content: false,
+      // add:false,
       delete:false,
-      defaultStyle: false
+      // add:false,
+
+    //   custom: [
+    //     { name: 'email', title: '<i class="nb-email"></i>' },
+
+
+    // ],
       
-
-
-
     },
+
+
+    
 
 
 
@@ -141,9 +155,14 @@ getNewCustomer() {
       //   title: 'ID',
       //   type: 'number',
       // },
+      
       fullName: {
         title: 'First Name',
         type: 'string',
+        editable:false,
+          // addable: false,
+          
+          // edit:false
       },
       // lastName: {
       //   title: 'Last Name',
@@ -152,16 +171,24 @@ getNewCustomer() {
       mobile: {
         title: 'Mobile',
         type: 'number',
+        // addable: false,
+        filter: false                 
+
+
       },
       email: {
         title: 'E-mail',
         type: 'string',
-        // filter: false
+        // addable: false,
+
+        filter: false
       },
       address: {
         title: 'Address',
         type: 'string',
-        // filter: false                 
+        // addable: false,
+
+        filter: false                 
       },
 
     },
@@ -172,17 +199,16 @@ getNewCustomer() {
 
 
   onDeleteConfirm(event): void {
-    console.log(event, "event")
+    // console.log(event, "event")
+    this.open3();
   }
 
-  onCreateConfirm(event): void {
-    this.user.saveCustomer(this.myReactiveForm.value).subscribe((data) => {
-      this.myReactiveForm.reset();
-      this.getCustomer();
+  onCreateConfirm(): void {
+    this.open3();
       // this.makeToast();
 
 
-    });
+    
 
   }
 

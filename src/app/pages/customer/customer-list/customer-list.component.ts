@@ -4,6 +4,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { LocalDataFactory } from '@akveo/ng2-completer';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
+import {
+  NbComponentStatus,
+  NbGlobalLogicalPosition,
+  NbGlobalPhysicalPosition,
+  NbGlobalPosition,
+  NbToastrService,
+  NbToastrConfig,
+} from '@nebular/theme';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
 // import { debug } from 'console';
@@ -21,7 +29,7 @@ export class CusListomponent {
   public event =''
   myReactiveForm: FormGroup;
   constructor(
-    private user: UsersService,private route: ActivatedRoute, private router: Router,private service: SmartTableData
+    private user: UsersService,private route: ActivatedRoute, private router: Router,private service: SmartTableData,private toastrService: NbToastrService
   ) { }
 
   public userObj = {
@@ -89,6 +97,7 @@ export class CusListomponent {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
@@ -117,7 +126,7 @@ export class CusListomponent {
       // },
       mobile: {
         title: 'Mobile',
-        type: 'number',
+        type: 'Number',
       },
       email: {
         title: 'E-mail',
@@ -141,21 +150,117 @@ export class CusListomponent {
     console.log(event,"event")
   }
 
-  onCreateConfirm() {
-    this.user.saveCustomer(this.myReactiveForm.value).subscribe((data) => {
-      this.myReactiveForm.reset();
+  onCreateConfirm(event) {
+    var data = {"fullName" : event.newData.fullName,
+    "mobile" : event.newData.mobile,
+    "email" : event.newData.email,
+    "address": event.newData.address,
+
+    };
+    this.user.saveCustomer(data).subscribe((result) => {
+      // this.myReactiveForm.reset();
       this.getCustomer();
-     
+      console.log(result);
+    
       // console.log(event);
       
-      // this.makeToast();
-
-    
+      this.makeToast();
     });
    
   }
 
+  onUpdateConfirm(event) {
+    var data = {"fullName" : event.newData.fullName,
+    "mobile" : event.newData.mobile,
+    "email" : event.newData.email,
+    "address": event.newData.address,
 
+    };
+    let id = event.newData._id
+    this.user.editCustomer(data,id).subscribe((result) => {
+      this.getCustomer();
+      console.log("Succesfull",result);
+      this.makeToast2()
+    });
+
+   }
+
+  
+
+
+
+
+
+//TOASTER
+
+config: NbToastrConfig;
+destroyByClick = true;
+duration = 6000;
+hasIcon = true;
+position: NbGlobalPosition = NbGlobalPhysicalPosition.TOP_RIGHT;
+preventDuplicates = false;
+status: NbComponentStatus = 'success';
+
+title = 'Customer Added';
+content = `Successfully!`;
+title1 = 'Customer Updated';
+content1 = `Successfully!`;
+
+types: NbComponentStatus[] = [
+ 
+  'success',
+ 
+];
+positions: string[] = [
+
+  NbGlobalPhysicalPosition.TOP_LEFT,
+ 
+];
+
+
+
+
+
+//Toaster
+makeToast() {
+  this.showToast(this.status, this.title,this.content);
+}
+private showToast(type: NbComponentStatus, title: string,body:String) {
+  const config = {
+    status: type,
+    destroyByClick: this.destroyByClick,
+    duration: this.duration,
+    hasIcon: this.hasIcon,
+    position: this.position,
+    preventDuplicates: this.preventDuplicates,
+  };
+  const titleContent = title ? `${title}` : '';
+  
+  this.toastrService.show(
+    body,
+    titleContent,
+    config);
+}
+
+makeToast2() {
+  this.showToast2(this.status, this.title,this.content);
+}
+private showToast2(type: NbComponentStatus, title: string,body:String) {
+  const config = {
+    status: type,
+    destroyByClick: this.destroyByClick,
+    duration: this.duration,
+    hasIcon: this.hasIcon,
+    position: this.position,
+    preventDuplicates: this.preventDuplicates,
+  };
+  const titleContent = this.title1 ? `${this.title1}` : '';
+  
+  this.toastrService.show(
+    body,
+    titleContent,
+    config);
+}
 
 
 

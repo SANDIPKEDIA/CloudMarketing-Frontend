@@ -9,6 +9,8 @@ import {
   NbToastrService,
   NbToastrConfig,
 } from '@nebular/theme';
+import { LocalDataSource } from 'ng2-smart-table';
+import { SmartTableData } from '../../../@core/data/smart-table';
 
 
 @Component({
@@ -23,14 +25,16 @@ export class PushNotificationComponent {
   myReactiveForm: FormGroup;
   public list;
   public allList;
+  source: LocalDataSource = new LocalDataSource();
+
   constructor(
-    private user: UsersService,
+    private user: UsersService,private service: SmartTableData
   ) {}
 
 
   
   ngOnInit() {
-    this.getNewCustomer();
+    this.getCustomer();
 
 
     this.myReactiveForm = new FormGroup({
@@ -39,6 +43,7 @@ export class PushNotificationComponent {
       email:new FormControl(''),
       mobile: new FormControl(''),
       address: new FormControl(''),
+      description:new FormControl(''),
   
 
     });
@@ -70,7 +75,7 @@ export class PushNotificationComponent {
     this.user.getCustomer().subscribe((result) => {
       console.log("Customer result", result);
       this.customerList = result["object"]['UserList'];
-      this.source.load(this.customerList);
+      // this.source.load(this.customerList);
       // this.source.load(this.allList);
       this.getNewCustomer();
 
@@ -80,14 +85,13 @@ export class PushNotificationComponent {
   }
 
   getNewCustomer() {
-
     this.user.getNewCustomer().subscribe((result) => {
        this.list = result["response"];
-        this.allList = this.customerList.concat(this.list);
-        debugger
-       console.log("New Customer Result pushhhhh",this.allList);
+      this.allList =  this.customerList.concat(this.list);
+      // this.source.load(this.allList);
+        // debugger
+      //  console.log("New Customer Result",this.allList);
        
-      
       
     });
   }

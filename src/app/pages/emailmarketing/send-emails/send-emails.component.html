@@ -31,7 +31,9 @@
   
     <nb-card-body>
       <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
-      <ng2-smart-table [settings]="settings" [source]="source"  (deleteConfirm)="onDeleteConfirm($event)">
+      <!-- <button nbButton (click)="open3()">Send Email<i class="nb-email"></i></button> -->
+
+      <ng2-smart-table [settings]="settings" [source]="source"  (createConfirm)="open3()" (deleteConfirm)="onDeleteConfirm($event)">
       </ng2-smart-table>
     </nb-card-body>
   </nb-card>

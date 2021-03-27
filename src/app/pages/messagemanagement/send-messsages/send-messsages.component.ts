@@ -166,7 +166,7 @@ export class SendMsgComponent {
 
     actions: {
       columnTitle: 'Send Message',
-      add: false,
+      // add: false,
       edit: false,
       content: false,
       delete:false,

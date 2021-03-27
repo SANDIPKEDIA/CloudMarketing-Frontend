@@ -65,6 +65,12 @@ export class UsersService {
     let url=this.baseUrl + "/api/v1/sendpushnotification/"+body
     return this.http.post(url,body);
   }
+
+  editCustomer(body,id)
+  {
+    let url=this.baseUrl + "/api/v1/editcustomer/"+id
+    return this.http.put(url,body);
+  }
   
 
 }

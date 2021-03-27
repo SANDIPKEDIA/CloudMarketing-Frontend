@@ -9,6 +9,8 @@ import {
   NbToastrService,
   NbToastrConfig,
 } from '@nebular/theme';
+import { LocalDataSource } from 'ng2-smart-table';
+import { SmartTableData } from '../../../@core/data/smart-table';
 
 
 @Component({
@@ -17,11 +19,16 @@ import {
   templateUrl: './send-notifications.component.html',
 })
 export class SendNotificationComponent {
+  [x: string]: any;
 
   public customerList=[];
   myReactiveForm: FormGroup;
+  public list;
+  public allList;
+  source: LocalDataSource = new LocalDataSource();
+
   constructor(
-    private user: UsersService,
+    private user: UsersService,private service: SmartTableData
   ) {}
 
 
@@ -36,20 +43,60 @@ export class SendNotificationComponent {
       email:new FormControl(''),
       mobile: new FormControl(''),
       address: new FormControl(''),
+      descriptin:new FormControl(''),
   
 
     });
   }
 
+  // getCustomer() {
+  //   this.user.getCustomer().subscribe((result) => {
+  //     console.log("Customer result from push notification", result);
+  //     this.customerList = result["object"]['UserList'];
+  //     this.source.load(this.customerList);
+   
+  //     this.getNewCustomer();
+
+      
+      
+  //   });
+  // }
+
+  // getNewCustomer() {
+  //   this.user.getNewCustomer().subscribe((result) => {
+  //     // console.log("Customer result", result);
+  //     this.list = result["response"];
+  //      this.allList = this.customerList.concat(this.list)
+  //     console.log("allList",this.allList);
+      
+  //   });
+  // }
   getCustomer() {
     this.user.getCustomer().subscribe((result) => {
       console.log("Customer result", result);
-      this.customerList = result["response"];
+      this.customerList = result["object"]['UserList'];
+      // this.source.load(this.customerList);
+      // this.source.load(this.allList);
+      this.getNewCustomer();
+
+      
+      
     });
   }
+
+  getNewCustomer() {
+    this.user.getNewCustomer().subscribe((result) => {
+       this.list = result["response"];
+      this.allList =  this.customerList.concat(this.list);
+      // this.source.load(this.allList);
+        // debugger
+      //  console.log("New Customer Result",this.allList);
+       
+      
+    });
+  }
+
+
+
  
-  
 }
-  
-
-
