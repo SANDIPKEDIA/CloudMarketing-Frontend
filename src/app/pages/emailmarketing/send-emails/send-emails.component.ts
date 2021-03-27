@@ -100,24 +100,36 @@ getNewCustomer() {
 
   settings = {
     
-mode:'internal',
+// mode:'external',
 // addable: false,
 // actions: false,
 // hideSubHeader:true,
     add: {
       addButtonContent: '<i class="nb-email"></i>',
-      // createButtonContent:'hide',
-      // cancelButtonContent: '',
-      // inputClass:'abcd',
+      createButtonContent:'<i class="nb-checkmark"></i>',
+      cancelButtonContent:  '<i class="nb-close"></i>',
+    
       hideSubFooter:true,
       
       confirmCreate: true,
+      // columns:{
+      //   fullName: {
+      //     title: 'First Name',
+      //     type: 'Html',
+      //     editable:false, 
+      //       addable: false,
+            
+      //       // edit:false
+      //   },
+
+      // }
       
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+
     },
 
     email: {
@@ -145,8 +157,10 @@ mode:'internal',
       
     },
 
-
-    
+  remove:{
+    createButtonContent:true,
+  },
+      
 
 
 
@@ -158,9 +172,9 @@ mode:'internal',
       
       fullName: {
         title: 'First Name',
-        type: 'string',
-        editable:false,
-          // addable: false,
+        type: 'Html',
+        editable:false, 
+          addable: false,
           
           // edit:false
       },
@@ -172,14 +186,14 @@ mode:'internal',
         title: 'Mobile',
         type: 'number',
         // addable: false,
-        filter: false                 
-
-
+        filter: false ,  
+        addable:false              
       },
       email: {
         title: 'E-mail',
         type: 'string',
         // addable: false,
+        show:false,
 
         filter: false
       },
@@ -187,16 +201,13 @@ mode:'internal',
         title: 'Address',
         type: 'string',
         // addable: false,
+        addable:false,
 
         filter: false                 
       },
 
     },
   };
-
-
-
-
 
   onDeleteConfirm(event): void {
     // console.log(event, "event")
