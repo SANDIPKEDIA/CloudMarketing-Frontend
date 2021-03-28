@@ -4,6 +4,8 @@ import { NbComponentStatus, NbDialogRef, NbGlobalPhysicalPosition, NbGlobalPosit
 
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../../../../users.service';
+import { SmartTableData } from '../../../../@core/data/smart-table';
+import { LocalDataSource } from 'ng2-smart-table';
 
 
 @Component({
@@ -17,31 +19,40 @@ export class DialogNamePromptComponent {
   myReactiveForm: FormGroup;
   public list = [];
   public allList = [];
-  constructor(protected ref: NbDialogRef<DialogNamePromptComponent>,private user: UsersService,private toastrService: NbToastrService) {}
+  public number;
+  source: LocalDataSource = new LocalDataSource();
 
- 
+  constructor(protected ref: NbDialogRef<DialogNamePromptComponent>,private service: SmartTableData,private user: UsersService,private toastrService: NbToastrService) {}
+
+
+      
+  
   ngOnInit() {
+    
+  this.number = localStorage.getItem('mobile')
+ 
+  
+    
     this.getNewCustomer();
 
     this.myReactiveForm = new FormGroup({
       id: new FormControl(''),
       fullName: new FormControl(''),
       email: new FormControl(''),
-      mobile: new FormControl(''),
+      mobile: new FormControl(this.number),
       address: new FormControl(''),
-      number: new FormControl(''),
-
-
+      message: new FormControl(''),
 
     });
-  }
 
+  }
+ 
 
   onSubmit(body) {
-    let number = this.myReactiveForm.get("number").value;
+    let number = this.myReactiveForm.get("mobile").value;
     this.user.Message(number).subscribe((data) => {
       this.myReactiveForm.reset();
-      console.log(number);
+      console.log("body",number);
       this.makeToast();
 
     });
@@ -98,5 +109,105 @@ export class DialogNamePromptComponent {
       titleContent,
       config);
   }
+
+
+
+
+
+
+
+  settings = {
+    
+
+    add: {
+      addButtonContent: '<i class="nb-email"></i>',
+      createButtonContent: '',
+      cancelButtonContent: '',
+      // confirmCreate: true,
+    },
+    edit: {
+      editButtonContent: '<i class="nb-edit"></i>',
+      saveButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+    },
+
+    email: {
+      addButtonContent: '<i class="nb-email"></i>',
+      // confirmDelete: true,
+    },
+    delete: {
+      // deleteButtonContent: '<i class="nb-chat"></i><p>Send Message</p>',
+      deleteButtonContent:' <p style="font-size:20px">Send Message <i class="nb-paper-plane"></i></p>',
+
+ 
+      confirmDelete: true,
+    },
+
+    actions: {
+      columnTitle: 'Send Message',
+      add: false, 
+      edit: false,
+      content: false,
+      // delete:false,
+      defaultStyle: false
+      
+
+
+
+    },
+
+
+
+    columns: {
+      // _id: {
+      //   title: 'ID',
+      //   type: 'number',
+      // },
+      fullName: {
+        title: 'First Name',
+        type: 'string',
+      },
+      // lastName: {
+      //   title: 'Last Name',
+      //   type: 'string',
+      // },
+      mobile: {
+        title: 'Mobile',
+        type: 'number',
+      },
+      email: {
+        title: 'E-mail',
+        type: 'string',
+        // filter: false
+      },
+      address: {
+        title: 'Address',
+        type: 'string',
+        // filter: false                 
+      },
+
+    },
+  };
+
+  // onDeleteConfirm(event): void {
+  //   // console.log(event, "event")
+  //    this.number = event.data.mobile
+  //    console.log(this.number);
+  //  this.user.Message(this.number).subscribe((result)=>{
+     
+  //     console.log("sended message to",this.number);
+  //  })
+  // }
+   
+    // console.log(number);
+    
+
+  
+
+
+
+
+
+
 
 }

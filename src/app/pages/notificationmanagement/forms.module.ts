@@ -1,6 +1,8 @@
 
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 
 
 import {
@@ -22,6 +24,7 @@ import { PushNotificationComponent } from './push-notification/push-notification
 import { SendNotificationComponent } from './send-notifications/send-notifications.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
+import { DialogNamePromptComponent } from './push-notification/dialog-name-prompt/dialog-name-prompt.component';
 // import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -39,7 +42,8 @@ import { ButtonsComponent } from './buttons/buttons.component';
     NbSelectModule,
     NbIconModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2SmartTableModule
     // ngFormsModule,
   ],
   declarations: [
@@ -48,6 +52,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
     PushNotificationComponent,
     SendNotificationComponent,
     DatepickerComponent,
+    DialogNamePromptComponent
   ],
 })
 export class UINotificationModule { }

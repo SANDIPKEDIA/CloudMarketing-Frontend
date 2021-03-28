@@ -33,6 +33,7 @@ export class SendEmailsComponent {
   public list = [];
   public allList = [];
   source: LocalDataSource = new LocalDataSource();
+  public email=''
 
 
   constructor(
@@ -105,7 +106,7 @@ getNewCustomer() {
 // actions: false,
 // hideSubHeader:true,
     add: {
-      addButtonContent: '<i class="nb-email"></i>',
+      addButtonContent: '<i class="nb-email"></i><p></p>',
       createButtonContent:'<i class="nb-checkmark"></i>',
       cancelButtonContent:  '<i class="nb-close"></i>',
     
@@ -137,7 +138,9 @@ getNewCustomer() {
       // confirmDelete: true,
     },
     delete: {
-      deleteButtonContent: '<i class="nb-email"></i>',
+      // deleteButtonContent: '<i class="nb-email"></i><p>Send Email</p>',
+      deleteButtonContent:' <p style="font-size:20px">Send Email <i class="nb-email"></i></p>',
+
       confirmDelete: true,
     },
 
@@ -146,8 +149,8 @@ getNewCustomer() {
      
       edit: false,
       // add:false,
-      delete:false,
-      // add:false,
+      // delete:false,
+      add:false,
 
     //   custom: [
     //     { name: 'email', title: '<i class="nb-email"></i>' },
@@ -175,6 +178,7 @@ getNewCustomer() {
         type: 'Html',
         editable:false, 
           addable: false,
+          hide:true,
           
           // edit:false
       },
@@ -186,24 +190,24 @@ getNewCustomer() {
         title: 'Mobile',
         type: 'number',
         // addable: false,
-        filter: false ,  
-        addable:false              
+        // filter: false ,  
+        // addable:false              
       },
       email: {
         title: 'E-mail',
         type: 'string',
         // addable: false,
-        show:false,
+        // show:false,
 
-        filter: false
+        // filter: false
       },
       address: {
         title: 'Address',
         type: 'string',
         // addable: false,
-        addable:false,
+        // addable:false,
 
-        filter: false                 
+        // filter.placeholder: false                 
       },
 
     },
@@ -212,6 +216,18 @@ getNewCustomer() {
   onDeleteConfirm(event): void {
     // console.log(event, "event")
     this.open3();
+    var data = {"fullName" : event.newData.fullName,
+    "mobile" : event.newData.mobile,
+    "email" : event.newData.email,
+    "address": event.newData.address,
+
+    };
+    this.email = event.newData.email
+    this.user.Email(this.email).subscribe((result) => {
+      this.getCustomer();
+  
+      
+    });
   }
 
   onCreateConfirm(): void {

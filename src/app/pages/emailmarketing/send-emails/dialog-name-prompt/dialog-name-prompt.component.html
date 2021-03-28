@@ -1,16 +1,19 @@
-<nb-card>
-  <nb-card-header>Enter Email</nb-card-header>
+
+<nb-card class="card" accent="info">
+  <nb-card-header fullWidth>Send Email<i class="nb-email"></i></nb-card-header>
   <!-- <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)" class="editform-ui"> -->
-  <nb-card-body>
+  <nb-card-body fullWidth size="large">
     <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)" class="editform-ui">
-      <div class="form-group">
+      <div class="form-group" fullWidth size="large">
         <input type="email" formControlName="email" nbInput fullWidth placeholder="To:">
       </div>
+      <div class="form-group" fullWidth size="large">
+        <textarea formControlName="description" nbInput fullWidth placeholder="Description"></textarea>
+      </div>
   <nb-card-footer>
-    <button class="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
-    <button type="submit" nbButton status="success" >Submit</button>
+    <!-- <button class="cancel" nbButton status="danger" (click)="cancel()">Cancel</button> -->
+    <button type="submit" nbButton status="success" >Send</button>
   </nb-card-footer>
 </form>
 </nb-card-body>
 </nb-card>
-

@@ -1,4 +1,4 @@
-
+<!-- 
 
 
 <div class="lists row">
@@ -27,9 +27,24 @@
   </div>
 
 
- 
+  
+     <nb-card-header>
+      <button nbButton (click)="open3()">Send Email<i class="nb-email"></i></button>
+    </nb-card-header> -->
+    <nb-card>
+    <nb-card-body>
+
+
+      <ng2-smart-table [settings]="settings" [source]="source"  (createConfirm)="open3()" (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
  
 
   
   
+
+
+
+
 

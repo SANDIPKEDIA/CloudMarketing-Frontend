@@ -6,6 +6,16 @@
   }
 
   .cancel {
-    margin-right: 1rem;
+    margin-right: 10rem;
+  }
+  .card{
+    width: 200%;
+    margin-left: auto;
+    // margin-right: 400%;
+  
+    display: flexbox;
+  }
+  .submit{
+    margin-left: 10%;
   }
 }

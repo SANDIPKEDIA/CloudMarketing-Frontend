@@ -29,6 +29,7 @@ export class SendMsgComponent {
   myReactiveForm: FormGroup;
   public list = [];
   public allList = [];
+  public number;
   source: LocalDataSource = new LocalDataSource();
 
   constructor(
@@ -43,23 +44,25 @@ export class SendMsgComponent {
       id: new FormControl(''),
       fullName: new FormControl(''),
       email: new FormControl(''),
-      mobile: new FormControl(''),
+      mobile: new FormControl(this.number),
       address: new FormControl(''),
+      // number:new FormControl(this.number), 
+      
 
 
 
     });
   }
 
-  onSubmit(body) {
-    let number = this.myReactiveForm.get("number").value;
-    this.user.Message(number).subscribe((data) => {
-      this.myReactiveForm.reset();
-      console.log(number);
-      this.makeToast();
+  // onSubmit(body) {
+  //   let number = this.myReactiveForm.get("number").value;
+  //   this.user.Message(number).subscribe((data) => {
+  //     this.myReactiveForm.reset();
+  //     console.log(number);
+  //     this.makeToast();
 
-    });
-  }
+  //   });
+  // }
 
   open3(){
     this.dialogService.open(DialogNamePromptComponent)
@@ -160,16 +163,19 @@ export class SendMsgComponent {
       // confirmDelete: true,
     },
     delete: {
-      deleteButtonContent: '<i class="nb-email"></i>',
+      // deleteButtonContent: '<i class="nb-chat"></i><p>Send Message</p>',
+      deleteButtonContent:' <p style="font-size:20px">Send Message <i class="nb-paper-plane"></i></p>',
+
+ 
       confirmDelete: true,
     },
 
     actions: {
       columnTitle: 'Send Message',
-      // add: false,
+      add: false, 
       edit: false,
       content: false,
-      delete:false,
+      // delete:false,
       defaultStyle: false
       
 
@@ -211,19 +217,17 @@ export class SendMsgComponent {
   };
 
   onDeleteConfirm(event): void {
-    console.log(event, "event")
+    localStorage.setItem("mobile",event.data.mobile)
+
+    this.open3();
   }
-
-  onCreateConfirm(event): void {
-    this.user.saveCustomer(this.myReactiveForm.value).subscribe((data) => {
-      this.myReactiveForm.reset();
-      // this.getCustomer();
-      // this.makeToast();
+  
+  
 
 
-    });
 
-  }
+
+  
 
 
 

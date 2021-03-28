@@ -132,9 +132,9 @@ export class CusListomponent {
         title: 'E-mail',
         type: 'string',
         // filter: false
-        editable:false,
-        addtable:false,
-        hide:true
+        // editable:false,
+        // addtable:false,
+        // hide:true
       },
       address: {
         title: 'Address',

@@ -59,11 +59,6 @@ export class LoginComponent {
       localStorage.setItem('adminName', JSON.stringify(Name));
       this.onNavigateClick()
 
-
-      
-
-
-   
     });
   }
 

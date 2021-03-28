@@ -1,14 +1,17 @@
-<nb-card>
-  <nb-card-header>Enter Number</nb-card-header>
+<nb-card class="card" accent="success">
+  <nb-card-header>Send Messaage<i class="nb-paper-plane"></i></nb-card-header>
   <!-- <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)" class="editform-ui"> -->
-  <nb-card-body>
+  <nb-card-body class="list-card" fullWidth size="large">
     <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)" class="editform-ui">
       <div class="form-group">
-        <input type="email" formControlName="number" nbInput fullWidth placeholder="To:">
+        <input type="number" formControlName="mobile" nbInput fullWidth placeholder="To:" disabled>
+      </div>
+      <div class="form-group" fullWidth size="large">
+        <textarea formControlName="message" nbInput fullWidth placeholder="Enter Message"></textarea>
       </div>
   <nb-card-footer>
-    <button class="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
-    <button type="submit" nbButton status="success" >Submit</button>
+    <!-- <button class="cancel" nbButton status="danger" (click)="cancel()" ><i class="nb-close">Cancel</i></button> -->
+    <button type="submit" nbButton status="success" ><i class="nb-paper-plane">Send</i></button>
   </nb-card-footer>
 </form>
 </nb-card-body>

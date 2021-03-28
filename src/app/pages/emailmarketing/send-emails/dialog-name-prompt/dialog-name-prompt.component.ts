@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
 // import { UsersService } from './users.service';
+import { SendEmailsComponent } from '../../send-emails/send-emails.component';
+
 
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../../../../users.service';
+
 
 
 @Component({
@@ -19,14 +22,14 @@ export class DialogNamePromptComponent {
   public allList = [];
   constructor(protected ref: NbDialogRef<DialogNamePromptComponent>,private user: UsersService,) {}
 
- 
+  
   ngOnInit() {
     this.getNewCustomer();
 
     this.myReactiveForm = new FormGroup({
       id: new FormControl(''),
       fullName: new FormControl(''),
-      email: new FormControl(''),
+      email: new FormControl(),
       mobile: new FormControl(''),
       address: new FormControl(''),
 
@@ -58,7 +61,9 @@ export class DialogNamePromptComponent {
   }
   cancel() {
     this.ref.close();
+  
   }
+  
 
 
 

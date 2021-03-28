@@ -5,7 +5,7 @@ import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-header',
@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private userService: UserData,
     private layoutService: LayoutService,
     private breakpointService: NbMediaBreakpointsService,
-    private router:Router) {
+    private router:Router,private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -103,7 +103,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logout(){
     localStorage.clear();
-    this.router.navigateByUrl('/')
+    this.onNavigateClick()
+  }
+
+  onNavigateClick() {
+    
+    this.router.navigate(["/"], { relativeTo: this.route })
   }
 
   ngOnDestroy() {

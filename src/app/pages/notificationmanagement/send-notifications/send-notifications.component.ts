@@ -43,7 +43,7 @@ export class SendNotificationComponent {
       email:new FormControl(''),
       mobile: new FormControl(''),
       address: new FormControl(''),
-      descriptin:new FormControl(''),
+      description:new FormControl(''),
   
 
     });
