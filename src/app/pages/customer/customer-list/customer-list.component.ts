@@ -27,6 +27,7 @@ export class CusListomponent {
   public allList = [];
   source: LocalDataSource = new LocalDataSource();
   public event =''
+  public selectedRows;
   myReactiveForm: FormGroup;
   constructor(
     private user: UsersService,private route: ActivatedRoute, private router: Router,private service: SmartTableData,private toastrService: NbToastrService
@@ -86,6 +87,7 @@ export class CusListomponent {
   //smart
 
   settings = {
+    selectMode: 'multi',
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
@@ -107,6 +109,7 @@ export class CusListomponent {
     actions: {
 
       delete: false,
+      add:false,
   
     
       
@@ -123,6 +126,14 @@ export class CusListomponent {
       // lastName: {
       //   title: 'Last Name',
       //   type: 'string',
+      // },
+      // checkbox: {
+      //   title: 'Check Box',
+      //   // type: 'html',
+      //   // // valuePrepareFunction: (value) => { return this._sanitizer.bypassSecurityTrustHtml(this.input); },
+      //   // filter: false
+      //   selectMode: 'multi',
+
       // },
       mobile: {
         title: 'Mobile',
@@ -187,6 +198,16 @@ export class CusListomponent {
     });
 
    }
+
+   onUserRowSelect(event) {
+    this.selectedRows = event.selected;
+    console.log(this.selectedRows);
+    
+}
+// onClick() {
+//   // It will console all the selected rows
+//   console.log(this.selectedRows);
+// }
 
   
 
@@ -264,7 +285,6 @@ private showToast2(type: NbComponentStatus, title: string,body:String) {
     titleContent,
     config);
 }
-
 
 
 

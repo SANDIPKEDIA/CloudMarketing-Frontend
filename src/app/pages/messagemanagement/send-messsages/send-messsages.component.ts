@@ -30,6 +30,7 @@ export class SendMsgComponent {
   public list = [];
   public allList = [];
   public number;
+  public selectedRows;
   source: LocalDataSource = new LocalDataSource();
 
   constructor(
@@ -145,6 +146,7 @@ export class SendMsgComponent {
  
   settings = {
     
+    selectMode: 'multi',
 
     add: {
       addButtonContent: '<i class="nb-email"></i>',
@@ -190,9 +192,16 @@ export class SendMsgComponent {
       //   title: 'ID',
       //   type: 'number',
       // },
+      
+      // checkbox: {
+      //   title: 'First Name',
+      //   type: 'checkbox',
+      
+      // },
       fullName: {
         title: 'First Name',
         type: 'string',
+      
       },
       // lastName: {
       //   title: 'Last Name',
@@ -212,8 +221,10 @@ export class SendMsgComponent {
         type: 'string',
         // filter: false                 
       },
+      
 
     },
+ 
   };
 
   onDeleteConfirm(event): void {
@@ -222,7 +233,11 @@ export class SendMsgComponent {
     this.open3();
   }
   
-  
+  onUserRowSelect(event) {
+    this.selectedRows = event.selected;
+    console.log(this.selectedRows);
+    
+}
 
 
 

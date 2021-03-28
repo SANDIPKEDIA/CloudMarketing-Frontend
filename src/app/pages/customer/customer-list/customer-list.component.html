@@ -25,8 +25,9 @@
   </nb-card-header>
 
   <nb-card-body>
+    <!-- <button (click)="onClick()"></button> -->
     <!-- <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
-    <ng2-smart-table [settings]="settings" [source]="source"  (createConfirm)="onCreateConfirm($event)"  (editConfirm)="onUpdateConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)">
+    <ng2-smart-table [settings]="settings" allowFiltering='true' allowPaging='true' [source]="source"  (createConfirm)="onCreateConfirm($event)"  (editConfirm)="onUpdateConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)" (userRowSelect)="onUserRowSelect($event)">
     </ng2-smart-table>
   </nb-card-body>
 </nb-card>
