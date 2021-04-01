@@ -94,12 +94,12 @@ getNewCustomer() {
      this.list = result["response"];
     this.allList =  this.customerList.concat(this.list);
     this.source.load(this.allList);
-     this.allData =this.allList.filter(function(result){
+    this.allData =this.allList.filter(function(result){
       return result.device_token;
     })
 
     this.source.load(this.allData);
-    console.log("testing",this.allData);
+    // console.log("testing",this.allData);
   });
  
   

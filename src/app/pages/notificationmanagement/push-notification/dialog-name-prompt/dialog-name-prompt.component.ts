@@ -4,6 +4,7 @@ import { NbComponentStatus, NbDialogRef, NbGlobalPhysicalPosition, NbGlobalPosit
 
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../../../../users.service';
+import { LocalDataSource } from 'ng2-smart-table';
 
 
 @Component({
@@ -17,6 +18,9 @@ export class DialogNamePromptComponent {
   myReactiveForm: FormGroup;
   public list = [];
   public allList = [];
+  public allData=[];
+  source: LocalDataSource = new LocalDataSource();
+
   constructor(protected ref: NbDialogRef<DialogNamePromptComponent>,private user: UsersService,private toastrService: NbToastrService) {}
 
  
@@ -65,10 +69,11 @@ export class DialogNamePromptComponent {
     this.user.getNewCustomer().subscribe((result) => {
        this.list = result["response"];
       this.allList =  this.customerList.concat(this.list);
-      // this.source.load(this.allList);
-        // debugger
-      //  console.log("New Customer Result",this.allList);
-       
+      this.allData =this.allList.filter(function(result){
+        return result.device_token;
+      })
+  
+      this.source.load(this.allData);
       
     });
   }

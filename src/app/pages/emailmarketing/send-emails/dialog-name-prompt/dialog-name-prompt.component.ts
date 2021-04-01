@@ -47,7 +47,7 @@ export class DialogNamePromptComponent {
     let email = this.myReactiveForm.get("email").value;
     this.user.Email(email).subscribe((data) => {
       this.myReactiveForm.reset();
-      console.log(email);
+      console.log("Successfully Send Email to: ",email);
       this.makeToast();
 
     });

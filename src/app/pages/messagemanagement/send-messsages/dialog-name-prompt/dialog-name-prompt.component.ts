@@ -49,7 +49,7 @@ export class DialogNamePromptComponent {
     let number = this.myReactiveForm.get("mobile").value;
     this.user.Message(number).subscribe((data) => {
       this.myReactiveForm.reset();
-      console.log("body",number);
+      console.log("Successfully Send OTP to: ",number);
       this.makeToast();
 
     });
