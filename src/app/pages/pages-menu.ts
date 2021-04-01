@@ -27,6 +27,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
         
         link: '/pages/messagemanagement/send-messages',
       },
+      {
+        title: 'Send Bulk Message',
+        
+        link: '/pages/messagemanagement/bulk-messages',
+      },
+  
       
     ],
   },
@@ -56,14 +62,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'bell-outline',
     children: [
       {
-        title: 'Send Notification',
-        
-        link: '/pages/notificationmanagement/send-notifications',
-      },
-      {
         title: 'Push Notification',
         link: '/pages/notificationmanagement/push-notification',
       },
+      {
+        title: 'Send Bulk Notification',
+        
+        link: '/pages/notificationmanagement/send-notifications',
+      },
+    
       
     ],
   },

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { FormsComponent } from './forms.component';
 import { PushNotificationComponent } from './push-notification/push-notification.component';
-import { SendNotificationComponent } from './send-notifications/send-notifications.component';
+import { BulkNotificationComponent } from './send-notifications/send-notifications.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 
@@ -18,7 +18,7 @@ const routes: Routes = [
       },
       {
         path: 'send-notifications',
-        component: SendNotificationComponent,
+        component: BulkNotificationComponent,
       },
       
       {

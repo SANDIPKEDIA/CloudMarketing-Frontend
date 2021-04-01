@@ -5,7 +5,7 @@
   <nb-card-body fullWidth size="large">
     <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)" class="editform-ui">
       <div class="form-group" fullWidth size="large">
-        <input type="email" formControlName="email" nbInput fullWidth placeholder="To:">
+        <input type="email" formControlName="email" nbInput fullWidth placeholder="To:" disabled>
       </div>
       <div class="form-group" fullWidth size="large">
         <textarea formControlName="description" nbInput fullWidth placeholder="Description"></textarea>

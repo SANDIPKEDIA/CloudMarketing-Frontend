@@ -34,6 +34,8 @@ export class PushNotificationComponent {
   myReactiveForm: FormGroup;
   public list = [];
   public allList = [];
+  public allData=[];
+
   source: LocalDataSource = new LocalDataSource();
   public email=''
 
@@ -92,11 +94,15 @@ getNewCustomer() {
      this.list = result["response"];
     this.allList =  this.customerList.concat(this.list);
     this.source.load(this.allList);
-      // debugger
-    //  console.log("New Customer Result",this.allList);
-     
-    
+     this.allData =this.allList.filter(function(result){
+      return result.device_token;
+    })
+
+    this.source.load(this.allData);
+    console.log("testing",this.allData);
   });
+ 
+  
 }
 
 

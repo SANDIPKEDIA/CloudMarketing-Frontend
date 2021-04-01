@@ -24,6 +24,8 @@ import { SendMsgComponent } from './send-messsages/send-messsages.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { DialogNamePromptComponent } from './send-messsages/dialog-name-prompt/dialog-name-prompt.component';
+import { SendBulkMsgComponent } from './bulk-messages/bulk-messages.component';
+import { DialogNamePrompttComponent } from './bulk-messages/dialog-name-prompt/dialog-name-prompt.component';
 // import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -51,7 +53,9 @@ import { DialogNamePromptComponent } from './send-messsages/dialog-name-prompt/d
     FormInputsComponent,
     SendMsgComponent,
     DatepickerComponent,
-    DialogNamePromptComponent
+    DialogNamePromptComponent,
+    SendBulkMsgComponent,
+    DialogNamePrompttComponent
   ],
 })
 export class UIMsgModule { }

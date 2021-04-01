@@ -13,7 +13,7 @@ import { LocalDataSource } from 'ng2-smart-table';
   templateUrl: 'dialog-name-prompt.component.html',
   styleUrls: ['dialog-name-prompt.component.scss'],
 })
-export class DialogNamePromptComponent {
+export class DialogNamePrompttComponent {
 
   public customerList = [];
   myReactiveForm: FormGroup;
@@ -22,21 +22,21 @@ export class DialogNamePromptComponent {
   public number;
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(protected ref: NbDialogRef<DialogNamePromptComponent>,private service: SmartTableData,private user: UsersService,private toastrService: NbToastrService) {}
+  constructor(protected ref: NbDialogRef<DialogNamePrompttComponent>,private service: SmartTableData,private user: UsersService,private toastrService: NbToastrService) {}
 
 
       
   
   ngOnInit() {
     
-  this.number = localStorage.getItem('mobile');
+
     
     this.getNewCustomer();
     this.myReactiveForm = new FormGroup({
       id: new FormControl(''),
       fullName: new FormControl(''),
       email: new FormControl(''),
-      mobile: new FormControl(this.number),
+      mobile: new FormControl(),
       address: new FormControl(''),
       message: new FormControl(''),
 

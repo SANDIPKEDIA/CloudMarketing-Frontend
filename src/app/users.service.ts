@@ -56,7 +56,7 @@ export class UsersService {
   }
   Email(body){
 
-    let url=this.baseUrl + "/api/v1/sendemail/"+body
+    let url=this.baseUrl + "/api/v1/sendMail/"+body
     return this.http.post(url,body);
 
   }

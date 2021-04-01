@@ -23,8 +23,9 @@ import { FormsComponent } from './forms.component';
 import { EmailCampaignComponent } from './email-campaign/email-campaign.component';
 import { SendEmailsComponent } from './send-emails/send-emails.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
-import { BulkEmailComponent } from './bulk-emails/bulk-emails.component';
+import { SendBulkEmailsComponent } from './bulk-emails/bulk-emails.component';
 import { DialogNamePromptComponent } from './send-emails/dialog-name-prompt/dialog-name-prompt.component';
+import { DialogNamePrompttComponent } from './bulk-emails/dialog-name-prompt/dialog-name-prompt.component';
 // import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -48,11 +49,13 @@ import { DialogNamePromptComponent } from './send-emails/dialog-name-prompt/dial
   ],
   declarations: [
     FormsComponent,
-    BulkEmailComponent,
+    // BulkEmailComponent,
     EmailCampaignComponent,
     SendEmailsComponent,
     DatepickerComponent,
-    DialogNamePromptComponent
+    DialogNamePromptComponent,
+    SendBulkEmailsComponent,
+    DialogNamePrompttComponent
 
   ],
 })

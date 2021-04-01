@@ -1,4 +1,4 @@
-
+<!-- 
 
 
 <div class="lists row">
@@ -14,6 +14,9 @@
             </nb-select>        
             </div>
           <br>
+          <div class="form-group">
+            <textarea nbInput formControlName="description" placeholder="Message"></textarea>
+          </div>
           
 
           
@@ -21,12 +24,30 @@
         </form>
       </nb-card-body>
     </nb-card>
-  </div>
+  </div>-->
 
 
- 
- 
-
+  <nb-card>
+ <nb-card-header>
+      <button nbButton (click)="open3()">Send Bulk Notification<i class="nb-notifications"></i></button>
+    </nb-card-header>
+    
+      <nb-card-body>
   
   
+      <!-- <ng2-smart-table [settings]="settings" [source]="source"  (createConfirm)="open3()" (deleteConfirm)="onDeleteConfirm($event)"> -->
+                <ng2-smart-table [settings]="settings" allowFiltering='true' allowPaging='true' [source]="source"  (deleteConfirm)="onDeleteConfirm($event)" (userRowSelect)="onUserRowSelect($event)">
 
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+   
+  
+    
+    
+  
+  
+  
+  
+  
+  

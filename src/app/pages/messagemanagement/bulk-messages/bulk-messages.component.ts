@@ -1,71 +1,77 @@
 import { Component } from '@angular/core';
-import { NbComponentStatus, NbDialogRef, NbGlobalPhysicalPosition, NbGlobalPosition, NbToastrConfig, NbToastrService } from '@nebular/theme';
-// import { UsersService } from './users.service';
-
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from '../../../../users.service';
-import { SmartTableData } from '../../../../@core/data/smart-table';
+import { UsersService } from '../../../users.service';
+import {
+  NbComponentStatus,
+  NbGlobalLogicalPosition,
+  NbGlobalPhysicalPosition,
+  NbGlobalPosition,
+  NbToastrService,
+  NbToastrConfig,
+} from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
+import { NbDialogService } from '@nebular/theme';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SmartTableData } from '../../../@core/data/smart-table';
+import { DialogNamePrompttComponent } from './dialog-name-prompt/dialog-name-prompt.component';
+// import { DialogNamePromptComponent } from '../../messagemanagement/send-messages/dialog-name-prompt/dialog-name-prompt.component';
+// import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt.component';
 
 
 @Component({
-  selector: 'ngx-dialog-name-prompt',
-  templateUrl: 'dialog-name-prompt.component.html',
-  styleUrls: ['dialog-name-prompt.component.scss'],
+  selector: 'ngx-bulk-messages',
+  styleUrls: ['./bulk-messages.component.scss'],
+  templateUrl: './bulk-messages.component.html',
 })
-export class DialogNamePromptComponent {
+export class SendBulkMsgComponent {
 
-  public customerList = [];
+  public customerList=[];
   myReactiveForm: FormGroup;
   public list = [];
   public allList = [];
   public number;
+  public selectedRows;
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(protected ref: NbDialogRef<DialogNamePromptComponent>,private service: SmartTableData,private user: UsersService,private toastrService: NbToastrService) {}
+  constructor(
+    private user: UsersService,private toastrService: NbToastrService,private route: ActivatedRoute, private router: Router, private service: SmartTableData,private dialogService: NbDialogService
+    
+  ) {}
 
-
-      
-  
   ngOnInit() {
-    
-  this.number = localStorage.getItem('mobile');
-    
-    this.getNewCustomer();
+    this.getCustomer();
+
     this.myReactiveForm = new FormGroup({
       id: new FormControl(''),
       fullName: new FormControl(''),
       email: new FormControl(''),
       mobile: new FormControl(this.number),
       address: new FormControl(''),
-      message: new FormControl(''),
+      // number:new FormControl(this.number), 
+      
 
-    });
 
-  }
- 
-
-  onSubmit(body) {
-    let number = this.myReactiveForm.get("mobile").value;
-    this.user.Message(number).subscribe((data) => {
-      this.myReactiveForm.reset();
-      console.log("body",number);
-      this.makeToast();
 
     });
   }
 
-  getNewCustomer() {
-    this.user.getNewCustomer().subscribe((result) => {
-      this.list = result["response"];
-      // this.customerList.concat(this.list);
-     
-    });
-  }
-  cancel() {
-    this.ref.close();
+  // onSubmit(body) {
+  //   let number = this.myReactiveForm.get("number").value;
+  //   this.user.Message(number).subscribe((data) => {
+  //     this.myReactiveForm.reset();
+  //     console.log(number);
+  //     this.makeToast();
+
+  //   });
+  // }
+
+  open3(){
+    this.dialogService.open(DialogNamePrompttComponent)
+    // this.onSubmit(body);
+  
   }
 
+  //Toaster
   config: NbToastrConfig;
   destroyByClick = true;
   duration = 2000;
@@ -84,9 +90,41 @@ export class DialogNamePromptComponent {
   ];
   positions: string[] = [
 
-    NbGlobalPhysicalPosition.TOP_RIGHT,
+    NbGlobalPhysicalPosition.TOP_LEFT,
    
   ];
+
+  getCustomer() {
+    this.user.getCustomer().subscribe((result) => {
+      console.log("Customer result", result);
+      this.customerList = result["object"]['UserList'];
+      this.source.load(this.customerList);
+      // this.source.load(this.allList);
+      this.getNewCustomer();
+
+      
+      
+    });
+  }
+
+  getNewCustomer() {
+    this.user.getNewCustomer().subscribe((result) => {
+       this.list = result["response"];
+      this.allList =  this.customerList.concat(this.list);
+      this.source.load(this.allList);
+      let all =this.allList.filter(function(result){
+        return result.mobile;
+      })
+  
+      this.source.load(all);
+      
+    });
+  }
+
+
+
+
+  //Toaster
   makeToast() {
     this.showToast(this.status, this.title,this.content);
   }
@@ -107,14 +145,10 @@ export class DialogNamePromptComponent {
       config);
   }
 
-
-
-
-
-
-
+ 
   settings = {
     
+    selectMode: 'multi',
 
     add: {
       addButtonContent: '<i class="nb-email"></i>',
@@ -145,7 +179,7 @@ export class DialogNamePromptComponent {
       add: false, 
       edit: false,
       content: false,
-      // delete:false,
+      delete:false,
       defaultStyle: false
       
 
@@ -160,9 +194,16 @@ export class DialogNamePromptComponent {
       //   title: 'ID',
       //   type: 'number',
       // },
+      
+      // checkbox: {
+      //   title: 'First Name',
+      //   type: 'checkbox',
+      
+      // },
       fullName: {
         title: 'First Name',
         type: 'string',
+      
       },
       // lastName: {
       //   title: 'Last Name',
@@ -182,29 +223,33 @@ export class DialogNamePromptComponent {
         type: 'string',
         // filter: false                 
       },
+      
 
     },
+ 
   };
 
-  // onDeleteConfirm(event): void {
-  //   // console.log(event, "event")
-  //    this.number = event.data.mobile
-  //    console.log(this.number);
-  //  this.user.Message(this.number).subscribe((result)=>{
-     
-  //     console.log("sended message to",this.number);
-  //  })
-  // }
+  onDeleteConfirm(event): void {
    
-    // console.log(number);
+
+    this.open3();
+  }
+  
+  onUserRowSelect(event) {
+    this.selectedRows = event.selected;
+    console.log(this.selectedRows);
     
+}
+
+
+
 
   
 
 
 
-
-
-
-
+  
 }
+  
+
+

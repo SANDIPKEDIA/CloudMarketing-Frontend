@@ -2,7 +2,7 @@ import { Component, ɵCodegenComponentFactoryResolver,TemplateRef } from '@angul
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../../../users.service';
 import { LocalDataSource } from 'ng2-smart-table';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogService, NB_THEME_OPTIONS } from '@nebular/theme';
 import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt.component';
 
 
@@ -31,6 +31,7 @@ export class SendEmailsComponent {
   public customerList = [];
   myReactiveForm: FormGroup;
   public list = [];
+  public all;
   public allList = [];
   source: LocalDataSource = new LocalDataSource();
   public email=''
@@ -89,18 +90,26 @@ getNewCustomer() {
      this.list = result["response"];
     this.allList =  this.customerList.concat(this.list);
     this.source.load(this.allList);
-      // debugger
-    //  console.log("New Customer Result",this.allList);
-     
+    let all =this.allList.filter(function(result){
+      return result.email;
+    })
+
+    this.source.load(all);
+
+      
+
+    // console.log("alllist",all);
+
     
   });
 }
 
 
+
+
   //smart
 
-  settings = {
-    
+  settings = { 
 // mode:'external',
 // addable: false,
 // actions: false,
@@ -215,6 +224,7 @@ getNewCustomer() {
 
   onDeleteConfirm(event): void {
     // console.log(event, "event")
+    localStorage.setItem("email",event.data.email)
     this.open3();
     var data = {"fullName" : event.newData.fullName,
     "mobile" : event.newData.mobile,
@@ -231,6 +241,7 @@ getNewCustomer() {
   }
 
   onCreateConfirm(): void {
+    
     this.open3();
       // this.makeToast();
 

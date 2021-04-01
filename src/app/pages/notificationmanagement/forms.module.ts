@@ -21,10 +21,11 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { FormsRoutingModule } from './forms-routing.module';
 import { FormsComponent } from './forms.component';
 import { PushNotificationComponent } from './push-notification/push-notification.component';
-import { SendNotificationComponent } from './send-notifications/send-notifications.component';
+import { BulkNotificationComponent } from './send-notifications/send-notifications.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { DialogNamePromptComponent } from './push-notification/dialog-name-prompt/dialog-name-prompt.component';
+import { DialogNamePrompttComponent } from './send-notifications/dialog-name-prompt/dialog-name-prompt.component';
 // import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -50,9 +51,10 @@ import { DialogNamePromptComponent } from './push-notification/dialog-name-promp
     FormsComponent,
     ButtonsComponent,
     PushNotificationComponent,
-    SendNotificationComponent,
+    BulkNotificationComponent,
     DatepickerComponent,
-    DialogNamePromptComponent
+    DialogNamePromptComponent,
+    DialogNamePrompttComponent
   ],
 })
 export class UINotificationModule { }

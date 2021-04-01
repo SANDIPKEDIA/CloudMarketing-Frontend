@@ -6,6 +6,7 @@ import { FormInputsComponent } from './form-inputs/form-inputs.component';
 import { SendMsgComponent } from './send-messsages/send-messsages.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
+import { SendBulkMsgComponent } from './bulk-messages/bulk-messages.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
         component: SendMsgComponent,
       },
       
+      {
+        path: 'bulk-messages',
+        component: SendBulkMsgComponent,
+      },
       {
         path: 'buttons',
         component: ButtonsComponent,

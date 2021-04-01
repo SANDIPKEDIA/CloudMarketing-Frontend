@@ -112,9 +112,11 @@ export class SendMsgComponent {
        this.list = result["response"];
       this.allList =  this.customerList.concat(this.list);
       this.source.load(this.allList);
-        // debugger
-      //  console.log("New Customer Result",this.allList);
-       
+      let all =this.allList.filter(function(result){
+        return result.mobile;
+      })
+  
+      this.source.load(all);
       
     });
   }
@@ -146,7 +148,7 @@ export class SendMsgComponent {
  
   settings = {
     
-    selectMode: 'multi',
+    // selectMode: 'multi',
 
     add: {
       addButtonContent: '<i class="nb-email"></i>',

@@ -5,7 +5,7 @@ import { FormsComponent } from './forms.component';
 import { EmailCampaignComponent } from './email-campaign/email-campaign.component';
 import { SendEmailsComponent } from './send-emails/send-emails.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
-import { BulkEmailComponent } from './bulk-emails/bulk-emails.component';
+import { SendBulkEmailsComponent } from './bulk-emails/bulk-emails.component';
 
 const routes: Routes = [
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: 'bulk-emails',
-        component: BulkEmailComponent,
+        component: SendBulkEmailsComponent,
       },
       {
         path: 'datepicker',

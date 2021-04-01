@@ -1,11 +1,11 @@
 
 <nb-card class="card" accent="info">
-  <nb-card-header fullWidth>Send Message<i class="nb-paper-plane"></i></nb-card-header>
+  <nb-card-header fullWidth>Bulk Message<i class="nb-paper-plane"></i><i class="nb-paper-plane"></i></nb-card-header>
   <!-- <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)" class="editform-ui"> -->
   <nb-card-body fullWidth size="large">
     <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)" class="editform-ui">
       <div class="form-group" fullWidth size="large">
-        <input type="number" formControlName="mobile" nbInput fullWidth placeholder="To:" disabled>
+        <input type="number" formControlName="mobile" nbInput fullWidth placeholder="To: Selected Numbers" disabled>
       </div>
       <div class="form-group" fullWidth size="large">
         <textarea formControlName="description" nbInput fullWidth placeholder="Description"></textarea>
