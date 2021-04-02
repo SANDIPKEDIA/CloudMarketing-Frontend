@@ -73,6 +73,22 @@ export const MENU_ITEMS: NbMenuItem[] = [
     
       
     ],
+    
+    
+  },
+
+
+  {
+    title: 'ASO',
+    icon: 'person-outline',
+    children: [
+      {
+        title: 'ASO Optimization',
+        
+        link: '/pages/aso/add-customer',
+      },
+     
+    ],
   },
   // {
   //   title: 'Auth',

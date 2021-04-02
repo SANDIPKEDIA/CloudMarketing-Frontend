@@ -60,7 +60,6 @@ export class SendBulkEmailsComponent {
 
   onSubmit(body) {
 
-    
     let email = this.myReactiveForm.get("email").value;
     this.user.Email(email).subscribe((data) => {
       this.myReactiveForm.reset();

@@ -41,6 +41,11 @@ const routes: Routes = [{
         .then(m => m.UICusModule),
     },
     {
+      path: 'aso',
+      loadChildren: () => import('./aso/forms.module')
+        .then(m => m.UIAsoModule),
+    },
+    {
       path: 'auth',
       loadChildren: () => import('./authh/forms.module')
         .then(m => m.UIAuthhModule),

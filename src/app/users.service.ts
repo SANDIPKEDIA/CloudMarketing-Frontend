@@ -71,6 +71,15 @@ export class UsersService {
     let url=this.baseUrl + "/api/v1/editcustomer/"+id
     return this.http.put(url,body);
   }
-  
+  saveAso(body)
+  {
+    let url=this.baseUrl + "/api/v1/createaso"
+    return this.http.post(url,body);
+  }
+  getAso()
+  {
+    let url=this.baseUrl + "/api/v1/getallaso"
+    return this.http.get(url);
+  }
 
 }
