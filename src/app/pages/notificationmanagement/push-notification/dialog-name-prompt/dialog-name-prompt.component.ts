@@ -19,12 +19,15 @@ export class DialogNamePromptComponent {
   public list = [];
   public allList = [];
   public allData=[];
+  public title;
+  public devicetoken;
   source: LocalDataSource = new LocalDataSource();
 
   constructor(protected ref: NbDialogRef<DialogNamePromptComponent>,private user: UsersService,private toastrService: NbToastrService) {}
 
  
   ngOnInit() {
+    alert(this.devicetoken)
     this.getCustomer();
 
     this.myReactiveForm = new FormGroup({
@@ -39,6 +42,8 @@ export class DialogNamePromptComponent {
 
 
     });
+
+    // this.myReactiveForm.get('description').setValue(this.devicetoken)
   }
 
 
@@ -90,7 +95,7 @@ export class DialogNamePromptComponent {
   preventDuplicates = false;
   status: NbComponentStatus = 'success';
 
-  title = 'Message Send';
+  // title = 'Message Send';
   content = `Successfully!`;
 
   types: NbComponentStatus[] = [

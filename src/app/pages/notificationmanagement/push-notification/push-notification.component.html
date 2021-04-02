@@ -35,7 +35,7 @@
     <nb-card-body>
 
 
-      <ng2-smart-table [settings]="settings" [source]="source"  (createConfirm)="open3()" (deleteConfirm)="onDeleteConfirm($event)">
+      <ng2-smart-table [settings]="settings" [source]="source"  (createConfirm)="open3($event)" (deleteConfirm)="sendPushNotification($event)">
       </ng2-smart-table>
     </nb-card-body>
   </nb-card>

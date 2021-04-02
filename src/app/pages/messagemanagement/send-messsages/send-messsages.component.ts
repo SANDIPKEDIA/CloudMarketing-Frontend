@@ -34,7 +34,8 @@ export class SendMsgComponent {
   source: LocalDataSource = new LocalDataSource();
 
   constructor(
-    private user: UsersService,private toastrService: NbToastrService,private route: ActivatedRoute, private router: Router, private service: SmartTableData,private dialogService: NbDialogService
+    private user: UsersService,
+    private toastrService: NbToastrService,private route: ActivatedRoute, private router: Router, private service: SmartTableData,private dialogService: NbDialogService
     
   ) {}
 

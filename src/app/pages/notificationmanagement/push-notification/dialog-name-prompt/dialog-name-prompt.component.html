@@ -2,6 +2,7 @@
   <nb-card-header>Push Notification<i class="nb-notifications"></i></nb-card-header>
   <!-- <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)" class="editform-ui"> -->
   <nb-card-body>
+    {{devicetoken}}
     <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)" class="editform-ui">
       <div class="form-group">
         <nb-select fullWidth size="large" placeholder="Name-Number">
