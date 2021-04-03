@@ -145,9 +145,9 @@ export class PushNotificationComponent {
       // confirmDelete: true,
     },
     delete: {
-      // deleteButtonContent: '<i class="nb-bell"></i><p>Push Notification</p>',
-      deleteButtonContent:
-        ' <p style="font-size:20px">Push Notification <i class="nb-notifications"></i></p>',
+      deleteButtonContent: '<i class="nb-notifications"></i><p>Push Notification </p>',
+      // deleteButtonContent:
+        // ' <p style="font-size:20px">Push Notification <i class="nb-notifications"></i></p>',
       confirmDelete: true
     },
 

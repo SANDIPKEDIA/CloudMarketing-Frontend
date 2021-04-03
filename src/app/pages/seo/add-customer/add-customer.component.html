@@ -2,39 +2,41 @@
   <div class="col-md-12 col-lg-6 col-xxxl-6">
 
     <nb-card class="list-card">
-      <nb-card-header>ASO Optimization</nb-card-header>
+      <nb-card-header>SEO Optimization</nb-card-header>
       <nb-card-body>
         <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit()" class="editform-ui">
           <div class="form-group" fullWidth size="large">
-            <textarea formControlName="shortdescription" nbInput fullWidth placeholder="Short Description"></textarea>
+            <input type="text" formControlName="website_name" nbInput fullWidth placeholder="Website Name">
           </div>
           <br>
           <div class="form-group" fullWidth size="large">
-            <textarea formControlName="longdescription" nbInput fullWidth placeholder="Long Description"></textarea>
+            <input type="text" formControlName="web_url" nbInput fullWidth placeholder="Web Url">
           </div>
           <br>
 
           <div class="form-group">
-            <input type="text" formControlName="screenshot" nbInput fullWidth placeholder="Screenshot">
+            <input type="text" formControlName="title" nbInput fullWidth placeholder="Title">
           </div>
           <br>
           <div class="form-group">
-            <input type="text" formControlName="tag" nbInput fullWidth placeholder="Tag">
+            <input type="text" formControlName="description" nbInput fullWidth placeholder="Description">
           </div>
           <br>
 
+          <div class="form-group">
+            <!-- <input type="text" formControlName="tag" nbInput fullWidth placeholder="tag"> -->
+            <!-- <tag-input [(ngModel)]='items'
+          
+           (onAdd)="onItemAdded($event)">
+</tag-input>
+             -->
+          </div>
+          <br>
           <!-- <div class="form-group">
             <input type="text" formControlName="owner_id" nbInput fullWidth placeholder="Owner Id">
           </div>
           <br> -->
-          <div class="form-group">
-            <input type="text" formControlName="app_id" nbInput fullWidth placeholder="App Id">
-          </div>
-          <br>
-          <div class="form-group">
-            <input type="text" formControlName="app_name" nbInput fullWidth placeholder="App Name">
-          </div>
-          <br>
+  
           
           <button type="submit" nbButton status="success">Submit</button>
         </form>

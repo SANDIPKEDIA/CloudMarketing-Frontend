@@ -1,0 +1,53 @@
+<!-- 
+
+
+<div class="lists row">
+  <div class="col-md-12 col-lg-6 col-xxxl-6">
+
+    <nb-card class="list-card">
+      <nb-card-header>Customers</nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="myReactiveForm" class="editform-ui">
+          <div class="form-group">
+            <nb-select fullWidth size="large" placeholder="Name-Number">
+              <nb-option [value]="customer._id" *ngFor="let customer of allList">{{customer.fullName}}-{{customer.mobile}}</nb-option>
+            </nb-select>        
+            </div>
+          <br>
+          <div class="form-group">
+            <textarea nbInput formControlName="description" placeholder="Message"></textarea>
+          </div>
+          
+
+          
+          <button type="submit" nbButton status="success">Submit</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>-->
+
+
+  <nb-card>
+ <nb-card-header>
+      <button nbButton (click)="open3()">Send Greetings<i class="nb-star"></i></button>
+    </nb-card-header>
+    
+      <nb-card-body>
+  
+  
+      <!-- <ng2-smart-table [settings]="settings" [source]="source"  (createConfirm)="open3()" (deleteConfirm)="onDeleteConfirm($event)"> -->
+                <ng2-smart-table [settings]="settings" allowFiltering='true' allowPaging='true' [source]="source"  (deleteConfirm)="onDeleteConfirm($event)" (userRowSelect)="onUserRowSelect($event)">
+
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+   
+  
+    
+    
+  
+  
+  
+  
+  
+  

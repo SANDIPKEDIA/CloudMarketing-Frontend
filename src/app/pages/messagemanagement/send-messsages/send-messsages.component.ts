@@ -168,8 +168,8 @@ export class SendMsgComponent {
       // confirmDelete: true,
     },
     delete: {
-      // deleteButtonContent: '<i class="nb-chat"></i><p>Send Message</p>',
-      deleteButtonContent:' <p style="font-size:20px">Send Message <i class="nb-paper-plane"></i></p>',
+      deleteButtonContent: '<i class="nb-paper-plane"></i><p>Send Message</p>',
+      // deleteButtonContent:' <p style="font-size:20px">Send Message <i class="nb-paper-plane nb-large"></i></p>',
 
  
       confirmDelete: true,

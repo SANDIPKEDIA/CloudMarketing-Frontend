@@ -81,5 +81,15 @@ export class UsersService {
     let url=this.baseUrl + "/api/v1/getallaso"
     return this.http.get(url);
   }
+  saveSeo(body)
+  {
+    let url=this.baseUrl + "/api/v1/createseo"
+    return this.http.post(url,body);
+  }
+  getSeo()
+  {
+    let url=this.baseUrl + "/api/v1/getallseo"
+    return this.http.get(url);
+  }
 
 }

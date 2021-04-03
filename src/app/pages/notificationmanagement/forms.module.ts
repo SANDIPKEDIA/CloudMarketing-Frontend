@@ -26,6 +26,8 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { DialogNamePromptComponent } from './push-notification/dialog-name-prompt/dialog-name-prompt.component';
 import { DialogNamePrompttComponent } from './send-notifications/dialog-name-prompt/dialog-name-prompt.component';
+import { SendGreetingComponent } from './send-greetings/send-greetings.component';
+import { DialogNamePrompttComponents } from './send-greetings/dialog-name-prompt/dialog-name-prompt.component';
 // import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -54,7 +56,9 @@ import { DialogNamePrompttComponent } from './send-notifications/dialog-name-pro
     BulkNotificationComponent,
     DatepickerComponent,
     DialogNamePromptComponent,
-    DialogNamePrompttComponent
+    DialogNamePrompttComponent,
+    SendGreetingComponent,
+    DialogNamePrompttComponents
   ],
 })
 export class UINotificationModule { }

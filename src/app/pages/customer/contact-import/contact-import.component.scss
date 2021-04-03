@@ -13,6 +13,6 @@ nb-checkbox {
 nb-card.inline-form-card nb-card-body {
   padding-bottom: 0;
 }
-:host /deep/ .ng2-smart-action-multiple-select{ text-align: center; }
-
-:host /deep/ .ng2-smart-action-multiple-select > input{ width:13px; height:13px; display: unset; }
+:host{
+  width:100px
+}

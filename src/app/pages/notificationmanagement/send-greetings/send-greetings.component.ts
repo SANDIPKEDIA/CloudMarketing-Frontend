@@ -2,8 +2,8 @@ import { Component, ɵCodegenComponentFactoryResolver,TemplateRef } from '@angul
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../../../users.service';
 import { LocalDataSource } from 'ng2-smart-table';
-import { NbDialogService, NB_THEME_OPTIONS } from '@nebular/theme';
-import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt.component';
+import { NbDialogService } from '@nebular/theme';
+
 
 
 import { SmartTableData } from '../../../@core/data/smart-table';
@@ -18,20 +18,22 @@ import {
 } from '@nebular/theme';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfiniteListComponent } from '../../layout/infinite-list/infinite-list.component';
+import { DialogNamePrompttComponents } from './dialog-name-prompt/dialog-name-prompt.component';
+// import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt.component';
 // import { DialogNamePromptComponent } from '../../modal-overlays/dialog/dialog-name-prompt/dialog-name-prompt.component';
 
 
 @Component({
-  selector: 'ngx-send-emails',
-  styleUrls: ['./send-emails.component.scss'],
-  templateUrl: './send-emails.component.html',
+  selector: 'ngx-send-greetings',
+  styleUrls: ['./send-greetings.component.scss'],
+  templateUrl: './send-greetings.component.html',
 })
-export class SendEmailsComponent {
+export class SendGreetingComponent {
+  [x: string]: any;
 
   public customerList = [];
   myReactiveForm: FormGroup;
   public list = [];
-  public all;
   public allList = [];
   source: LocalDataSource = new LocalDataSource();
   public email=''
@@ -51,6 +53,7 @@ export class SendEmailsComponent {
       email: new FormControl(''),
       mobile: new FormControl(''),
       address: new FormControl(''),
+      description:new FormControl(''),
 
 
 
@@ -68,7 +71,7 @@ export class SendEmailsComponent {
   }
 
 open3(){
-  this.dialogService.open(DialogNamePromptComponent)
+  this.dialogService.open(DialogNamePrompttComponents)
   // this.onSubmit(body);
 
 }
@@ -91,25 +94,20 @@ getNewCustomer() {
     this.allList =  this.customerList.concat(this.list);
     this.source.load(this.allList);
     let all =this.allList.filter(function(result){
-      return result.email;
+      return result.device_token;
     })
-
     this.source.load(all);
-
-      
-
-    // console.log("alllist",all);
-
     
   });
 }
 
 
-
-
   //smart
 
-  settings = { 
+  settings = {
+    selectMode: 'multi',
+
+    
 // mode:'external',
 // addable: false,
 // actions: false,
@@ -147,18 +145,17 @@ getNewCustomer() {
       // confirmDelete: true,
     },
     delete: {
-      deleteButtonContent:'<i class="nb-email"></i><p>Send Message</p>',
-      // deleteButtonContent:' <p style="font-size:20px">Send Email <i class="nb-email"></i></p>',
-
+      // deleteButtonContent: '<i class="nb-bell"></i><p>Push Notification</p>',
+      deleteButtonContent:' <p style="font-size:20px">Push Notification <i class="nb-notifications"></i></p>',
       confirmDelete: true,
     },
 
     actions: {
-      columnTitle: 'Send Email',
+      columnTitle: 'Push Notification',
      
       edit: false,
       // add:false,
-      // delete:false,
+      delete:false,
       add:false,
 
     //   custom: [
@@ -224,7 +221,6 @@ getNewCustomer() {
 
   onDeleteConfirm(event): void {
     // console.log(event, "event")
-    localStorage.setItem("email",event.data.email)
     this.open3();
     var data = {"fullName" : event.newData.fullName,
     "mobile" : event.newData.mobile,
@@ -241,7 +237,6 @@ getNewCustomer() {
   }
 
   onCreateConfirm(): void {
-    
     this.open3();
       // this.makeToast();
 
@@ -249,11 +244,15 @@ getNewCustomer() {
     
 
   }
+  onUserRowSelect(event) {
+    this.selectedRows = event.selected;
+    console.log(this.selectedRows);
+    
+}
 
 
 
 
 }
-
 
 

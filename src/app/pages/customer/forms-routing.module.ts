@@ -7,6 +7,7 @@ import { AddCusComponent } from './add-customer/add-customer.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { CusListomponent } from './customer-list/customer-list.component';
+import { ContactImportComponent } from './contact-import/contact-import.component';
 
 
 const routes: Routes = [
@@ -28,8 +29,8 @@ const routes: Routes = [
         component: CusListomponent,
       },
       {
-        path: 'buttons',
-        component: ButtonsComponent,
+        path: 'contact-import',
+        component: ContactImportComponent,
       },
       {
         path: 'datepicker',

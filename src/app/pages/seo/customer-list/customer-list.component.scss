@@ -45,5 +45,8 @@
       border-top: none;
     }
   }
-  
+
 }
+:host /deep/ .ng2-smart-action-multiple-select{ text-align: center; }
+
+:host /deep/ .ng2-smart-action-multiple-select > input{ width:15px; height:15px; display: unset; }

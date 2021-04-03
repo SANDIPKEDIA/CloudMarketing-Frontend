@@ -15,6 +15,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Customer List',
         link: '/pages/customer/customer-list',
       },
+      {
+        title: 'Contact Import',
+        link: '/pages/customer/contact-import',
+      },
     ],
   },
 
@@ -70,7 +74,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
         
         link: '/pages/notificationmanagement/send-notifications',
       },
-    
+      {
+        title: 'Relationship',
+        
+        link: '/pages/notificationmanagement/send-greetings',
+      },
       
     ],
     
@@ -85,7 +93,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'ASO Optimization',
         
-        link: '/pages/aso/add-customer',
+        link: '/pages/aso/aso-optimization',
+      },
+     
+    ],
+  },
+
+  {
+    title: 'SEO',
+    icon: 'person-outline',
+    children: [
+      {
+        title: 'SEO Optimization',
+        
+        link: '/pages/seo/seo-optimization',
       },
      
     ],

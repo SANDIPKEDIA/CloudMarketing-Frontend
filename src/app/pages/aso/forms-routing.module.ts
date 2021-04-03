@@ -19,7 +19,7 @@ const routes: Routes = [
         component: FormInputsComponent,
       },
       {
-        path: 'add-customer',
+        path: 'aso-optimization',
         component: AddCusComponent,
       },
       

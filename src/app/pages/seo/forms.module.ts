@@ -2,6 +2,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import {
@@ -30,7 +32,6 @@ import { AddCusComponent } from './add-customer/add-customer.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { CusListomponent } from './customer-list/customer-list.component';
-import { ContactImportComponent } from './contact-import/contact-import.component';
 // import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -56,7 +57,11 @@ import { ContactImportComponent } from './contact-import/contact-import.componen
     FormsModule, 
     ReactiveFormsModule,
     // ngFormsModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    TagInputModule ,
+    BrowserAnimationsModule,
+  
+
   ],
   declarations: [
     FormsComponent,
@@ -65,7 +70,6 @@ import { ContactImportComponent } from './contact-import/contact-import.componen
     FormInputsComponent,
     CusListomponent,
     DatepickerComponent,
-    ContactImportComponent
   ],
 })
-export class UICusModule { }
+export class UISeoModule { }
