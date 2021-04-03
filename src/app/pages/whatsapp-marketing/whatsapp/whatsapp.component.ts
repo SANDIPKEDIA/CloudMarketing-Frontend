@@ -11,54 +11,52 @@ import {
 } from '@nebular/theme';
 
 
-
 @Component({
-  selector: 'ngx-add-customer',
-  styleUrls: ['./add-customer.component.scss'],
-  templateUrl: './add-customer.component.html',
+  selector: 'ngx-whatsapp',
+  styleUrls: ['./whatsapp.component.scss'],
+  templateUrl: './whatsapp.component.html',
 })
-export class AddCusComponent {
+export class WpComponent {
 
-  public asoList = [];
+  public asoList=[];
   myReactiveForm: FormGroup;
-  items = ['Pizza', 'Pasta', 'Parmesan'];
+
   constructor(
-    private user: UsersService, private toastrService: NbToastrService
-  ) { }
+    private user: UsersService,private toastrService: NbToastrService
+  ) {}
 
 
   ngOnInit() {
-    this.getSeo();
+    this.getAso();
 
 
     this.myReactiveForm = new FormGroup({
-      id: new FormControl(''),
-      web_url: new FormControl(''),
-      website_name: new FormControl(''),
-      title: new FormControl(''),
-      description: new FormControl(''),
+      id:new FormControl(''),
+      longdescription: new FormControl(''),
+      shortdescription:new FormControl(''),
+      screenshot: new FormControl(''),
       owner_id: new FormControl(''),
+      app_id:new FormControl(''),
+      app_name: new FormControl(''),
       tag: new FormControl(''),
-
-
-
+  
+  
 
     });
   }
- 
 
   onSubmit() {
-    this.user.saveSeo(this.myReactiveForm.value).subscribe((data) => {
+    this.user.saveAso(this.myReactiveForm.value).subscribe((data) => {
       this.myReactiveForm.reset();
-      this.getSeo();
+      this.getAso();
       this.makeToast();
 
-
+    
     });
   }
-  getSeo() {
-    this.user.getSeo().subscribe((result) => {
-      console.log("Seo result", result);
+  getAso() {
+    this.user.getAso().subscribe((result) => {
+      console.log("Aso result", result);
       this.asoList = result["response"];
     });
   }
@@ -73,29 +71,29 @@ export class AddCusComponent {
   preventDuplicates = false;
   status: NbComponentStatus = 'success';
 
-  title = 'Seo Added';
+  title = 'Aso Added';
   content = `Successfully!`;
 
   types: NbComponentStatus[] = [
-
+   
     'success',
-
+   
   ];
   positions: string[] = [
 
     NbGlobalPhysicalPosition.TOP_LEFT,
-
+   
   ];
 
 
+  
 
 
-
-  //Toaster
+//Toaster
   makeToast() {
-    this.showToast(this.status, this.title, this.content);
+    this.showToast(this.status, this.title,this.content);
   }
-  private showToast(type: NbComponentStatus, title: string, body: String) {
+  private showToast(type: NbComponentStatus, title: string,body:String) {
     const config = {
       status: type,
       destroyByClick: this.destroyByClick,
@@ -105,7 +103,7 @@ export class AddCusComponent {
       preventDuplicates: this.preventDuplicates,
     };
     const titleContent = title ? `${title}` : '';
-
+    
     this.toastrService.show(
       body,
       titleContent,
@@ -113,9 +111,8 @@ export class AddCusComponent {
   }
 
 
+  
 }
-
-
-
+  
 
 

@@ -91,5 +91,10 @@ export class UsersService {
     let url=this.baseUrl + "/api/v1/getallseo"
     return this.http.get(url);
   }
+  getOffer()
+  {
+    let url=this.baseUrl + "/api/v1/getalloffer"
+    return this.http.get(url);
+  }
 
 }

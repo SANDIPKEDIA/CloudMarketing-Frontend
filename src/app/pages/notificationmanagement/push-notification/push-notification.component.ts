@@ -99,7 +99,8 @@ export class PushNotificationComponent {
       this.allList = this.customerList.concat(this.list);
       this.source.load(this.allList);
       this.allData = this.allList.filter(function(result) {
-        return result.device_token;
+        let device_token = result.device_token
+        return result.device_token && device_token.length == 152;
       });
 
       this.source.load(this.allData);

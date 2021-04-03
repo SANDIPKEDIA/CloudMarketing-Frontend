@@ -28,6 +28,8 @@ import { DialogNamePromptComponent } from './push-notification/dialog-name-promp
 import { DialogNamePrompttComponent } from './send-notifications/dialog-name-prompt/dialog-name-prompt.component';
 import { SendGreetingComponent } from './send-greetings/send-greetings.component';
 import { DialogNamePrompttComponents } from './send-greetings/dialog-name-prompt/dialog-name-prompt.component';
+import { OfferTempComponent } from './offer-template/offer-template.component';
+import { DialogNamePrompttComponentss } from './offer-template/dialog-name-prompt/dialog-name-prompt.component';
 // import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -58,7 +60,9 @@ import { DialogNamePrompttComponents } from './send-greetings/dialog-name-prompt
     DialogNamePromptComponent,
     DialogNamePrompttComponent,
     SendGreetingComponent,
-    DialogNamePrompttComponents
+    DialogNamePrompttComponents,
+    DialogNamePrompttComponentss,
+    OfferTempComponent
   ],
 })
 export class UINotificationModule { }

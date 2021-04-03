@@ -27,7 +27,7 @@ export class DialogNamePromptComponent {
 
  
   ngOnInit() {
-    alert(this.devicetoken)
+    // alert(this.devicetoken)
     this.getCustomer();
 
     this.myReactiveForm = new FormGroup({

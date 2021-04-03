@@ -75,11 +75,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/notificationmanagement/send-notifications',
       },
       {
-        title: 'Relationship',
+        title: 'Greeting',
         
         link: '/pages/notificationmanagement/send-greetings',
       },
-      
+      {
+        title: 'Offer & Template',
+        
+        link: '/pages/notificationmanagement/offer-template',
+      },
     ],
     
     
@@ -107,6 +111,50 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'SEO Optimization',
         
         link: '/pages/seo/seo-optimization',
+      },
+     
+    ],
+  },
+  {
+    title: 'Add Management',
+    icon: 'person-outline',
+    children: [
+      {
+        title: 'Add on Facebook',
+        
+        link: '/pages/addmanagement/fb-add',
+      },
+      {
+        title: 'Add on Instagram',
+        
+        link: '/pages/addmanagement/insta-add',
+      },
+      {
+        title: 'Add on Google',
+        
+        link: '/pages/addmanagement/google-add',
+      },
+      {
+        title: 'Add on Gaana',
+        
+        link: '/pages/addmanagement/gaana-add',
+      },
+
+     
+    ],
+
+
+  },
+
+
+  {
+    title: 'Whatsapp Marketing',
+    icon: 'person-outline',
+    children: [
+      {
+        title: 'Send Whatsapp Message',
+        
+        link: '/pages/whatsapp-marketing/whatsapp-message',
       },
      
     ],

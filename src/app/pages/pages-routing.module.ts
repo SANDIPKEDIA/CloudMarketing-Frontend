@@ -51,9 +51,19 @@ const routes: Routes = [{
         .then(m => m.UISeoModule),
     },
     {
+      path: 'whatsapp-marketing',
+      loadChildren: () => import('./whatsapp-marketing/forms.module')
+        .then(m => m.UIWpModule),
+    },
+    {
       path: 'auth',
       loadChildren: () => import('./authh/forms.module')
         .then(m => m.UIAuthhModule),
+    },
+    {
+      path: 'addmanagement',
+      loadChildren: () => import('./addmanagement/forms.module')
+        .then(m => m.UIAddsModule),
     },
     {
       path: 'messagemanagement',

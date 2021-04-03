@@ -7,6 +7,7 @@ import { BulkNotificationComponent } from './send-notifications/send-notificatio
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { SendGreetingComponent } from './send-greetings/send-greetings.component';
+import { OfferTempComponent } from './offer-template/offer-template.component';
 
 const routes: Routes = [
   {
@@ -27,8 +28,8 @@ const routes: Routes = [
         component: SendGreetingComponent,
       },
       {
-        path: 'datepicker',
-        component: DatepickerComponent,
+        path: 'offer-template',
+        component: OfferTempComponent,
       },
     ],
   },
