@@ -65,9 +65,13 @@ export class SendBulkMsgComponent {
   //   });
   // }
 
-  open3(){
-    this.dialogService.open(DialogNamePrompttComponent)
-    // this.onSubmit(body);
+  open3(token:string){
+    this.open3(this.selectedRows)
+    this.dialogService.open(DialogNamePrompttComponent, {
+      context: {
+        devicetoken: token
+      }
+    });
   
   }
 
@@ -229,15 +233,19 @@ export class SendBulkMsgComponent {
  
   };
 
-  onDeleteConfirm(event): void {
+  // onDeleteConfirm(event): void {
    
 
-    this.open3();
-  }
+  //   this.open3(this.selectedRows);
+  // }
   
   onUserRowSelect(event) {
     this.selectedRows = event.selected;
-    console.log(this.selectedRows);
+    // this.open3(this.selectedRows)
+console.log("row",this.selectedRows);
+
+   
+    
     
 }
 

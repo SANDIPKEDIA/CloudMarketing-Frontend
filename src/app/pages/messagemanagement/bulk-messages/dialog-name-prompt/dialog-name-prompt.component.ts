@@ -6,6 +6,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UsersService } from '../../../../users.service';
 import { SmartTableData } from '../../../../@core/data/smart-table';
 import { LocalDataSource } from 'ng2-smart-table';
+import { LOADIPHLPAPI } from 'dns';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class DialogNamePrompttComponent {
   public list = [];
   public allList = [];
   public number;
+  public devicetoken;
   source: LocalDataSource = new LocalDataSource();
 
   constructor(protected ref: NbDialogRef<DialogNamePrompttComponent>,private service: SmartTableData,private user: UsersService,private toastrService: NbToastrService) {}
@@ -30,6 +32,7 @@ export class DialogNamePrompttComponent {
   ngOnInit() {
     
 
+    console.log("dialog box",this.devicetoken);
     
     this.getNewCustomer();
     this.myReactiveForm = new FormGroup({
@@ -39,8 +42,12 @@ export class DialogNamePrompttComponent {
       mobile: new FormControl(),
       address: new FormControl(''),
       message: new FormControl(''),
+      description: new FormControl(''),
+
 
     });
+      this.myReactiveForm.get('email').setValue(this.devicetoken)
+  
 
   }
  

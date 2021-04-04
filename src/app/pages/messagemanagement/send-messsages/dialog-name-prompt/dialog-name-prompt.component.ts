@@ -20,6 +20,7 @@ export class DialogNamePromptComponent {
   public list = [];
   public allList = [];
   public number;
+  public deviceMobile;
   source: LocalDataSource = new LocalDataSource();
 
   constructor(protected ref: NbDialogRef<DialogNamePromptComponent>,private service: SmartTableData,private user: UsersService,private toastrService: NbToastrService) {}
@@ -29,18 +30,19 @@ export class DialogNamePromptComponent {
   
   ngOnInit() {
     
-  this.number = localStorage.getItem('mobile');
+ 
     
     this.getNewCustomer();
     this.myReactiveForm = new FormGroup({
       id: new FormControl(''),
       fullName: new FormControl(''),
       email: new FormControl(''),
-      mobile: new FormControl(this.number),
+      mobile: new FormControl(),
       address: new FormControl(''),
       message: new FormControl(''),
 
     });
+this.myReactiveForm.get('mobile').setValue(this.deviceMobile)
 
   }
  

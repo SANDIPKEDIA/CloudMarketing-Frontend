@@ -20,6 +20,7 @@ export class DialogNamePrompttComponent {
   public list = [];
   public allList = [];
   public number;
+  public bulkemail;
   source: LocalDataSource = new LocalDataSource();
 
   constructor(protected ref: NbDialogRef<DialogNamePrompttComponent>,private service: SmartTableData,private user: UsersService,private toastrService: NbToastrService) {}
@@ -28,8 +29,8 @@ export class DialogNamePrompttComponent {
       
   
   ngOnInit() {
+  
     
-
     
     this.getNewCustomer();
     this.myReactiveForm = new FormGroup({
@@ -39,17 +40,21 @@ export class DialogNamePrompttComponent {
       mobile: new FormControl(),
       address: new FormControl(''),
       message: new FormControl(''),
+      description: new FormControl(''),
 
     });
+this.myReactiveForm.get('email').setValue(this.bulkemail)
+
 
   }
  
 
   onSubmit(body) {
-    let number = this.myReactiveForm.get("mobile").value;
-    this.user.Message(number).subscribe((data) => {
+
+    let email = this.myReactiveForm.get("email").value;
+    this.user.Email(email).subscribe((data) => {
       this.myReactiveForm.reset();
-      console.log("body",number);
+      console.log("body",email);
       this.makeToast();
 
     });

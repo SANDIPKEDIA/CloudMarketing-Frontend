@@ -2,6 +2,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { TagInputModule } from 'ngx-chips';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -57,6 +59,8 @@ import { CusListomponent } from './customer-list/customer-list.component';
     ReactiveFormsModule,
     // ngFormsModule,
     Ng2SmartTableModule,
+    TagInputModule,
+    // BrowserAnimationsModule
 
   
 

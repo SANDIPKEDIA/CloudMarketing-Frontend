@@ -21,17 +21,18 @@ export class DialogNamePromptComponent {
   public list = [];
   public allList = [];
   public email;
+  public deviceEmail;
   constructor(protected ref: NbDialogRef<DialogNamePromptComponent>,private user: UsersService,private toastrService: NbToastrService) {}
 
   
   ngOnInit() {
-    this.email = localStorage.getItem('email')
+    // this.email = localStorage.getItem('email')
     this.getNewCustomer();
 
     this.myReactiveForm = new FormGroup({
       id: new FormControl(''),
       fullName: new FormControl(''),
-      email: new FormControl(this.email),
+      email: new FormControl(),
       mobile: new FormControl(''),
       address: new FormControl(''),
       description: new FormControl(''),
@@ -39,6 +40,9 @@ export class DialogNamePromptComponent {
 
 
     });
+
+        this.myReactiveForm.get('email').setValue(this.deviceEmail)
+
   }
 
 

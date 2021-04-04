@@ -20,6 +20,9 @@ export class ContactImportComponent {
 
   public customerList=[];
   myReactiveForm: FormGroup;
+  shortLink: string = "";
+  loading: boolean = false; // Flag variable
+  file: File = null; // Variable to store file
 
   constructor(
     private user: UsersService,private toastrService: NbToastrService
@@ -41,15 +44,26 @@ export class ContactImportComponent {
     });
   }
 
-  onSubmit() {
-    this.user.saveCustomer(this.myReactiveForm.value).subscribe((data) => {
-      this.myReactiveForm.reset();
-      this.getCustomer();
-      this.makeToast();
+  onChange(event) {
+    this.file = event.target.files[0];
+}
 
-    
-    });
-  }
+// onUpload() {
+//   this.loading = !this.loading;
+//   console.log(this.file);
+//   this.user.upload(this.file).subscribe(
+//       (event: any) => {
+//           if (typeof (event) === 'object') {
+
+//               // Short link via api response
+//               this.shortLink = event.link;
+
+//               this.loading = false; // Flag variable 
+//           }
+//       }
+//   );
+// }
+
   getCustomer() {
     this.user.getCustomer().subscribe((result) => {
       console.log("Customer result", result);

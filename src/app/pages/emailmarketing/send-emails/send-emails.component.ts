@@ -67,9 +67,12 @@ export class SendEmailsComponent {
     });
   }
 
-open3(){
-  this.dialogService.open(DialogNamePromptComponent)
-  // this.onSubmit(body);
+open3(email:String){
+  this.dialogService.open(DialogNamePromptComponent, {
+    context: {
+      deviceEmail: email
+    }
+  });
 
 }
 getCustomer() {
@@ -222,10 +225,10 @@ getNewCustomer() {
     },
   };
 
-  onDeleteConfirm(event): void {
+  SendEmail(event): void {
     // console.log(event, "event")
-    localStorage.setItem("email",event.data.email)
-    this.open3();
+    this.open3(event.data.email);
+    
     var data = {"fullName" : event.newData.fullName,
     "mobile" : event.newData.mobile,
     "email" : event.newData.email,
@@ -238,16 +241,6 @@ getNewCustomer() {
   
       
     });
-  }
-
-  onCreateConfirm(): void {
-    
-    this.open3();
-      // this.makeToast();
-
-
-    
-
   }
 
 

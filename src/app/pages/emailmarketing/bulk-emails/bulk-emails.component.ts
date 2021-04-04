@@ -34,7 +34,8 @@ export class SendBulkEmailsComponent {
   public allList = [];
   source: LocalDataSource = new LocalDataSource();
   public email=''
-  public selectedRows;
+  public selectedRows=[];
+  public arr=[];
 
 
 
@@ -44,6 +45,8 @@ export class SendBulkEmailsComponent {
 
 
   ngOnInit() {
+    
+    
     this.getCustomer();
 
     this.myReactiveForm = new FormGroup({
@@ -67,12 +70,16 @@ export class SendBulkEmailsComponent {
 
     });
   }
-
-open3(){
-  this.dialogService.open(DialogNamePrompttComponent)
-  // this.onSubmit(body);
-
-}
+  open3() {
+    // this.onUserRowSelect(event.selected);
+    console.log("this",this.selectedRows);
+    this.dialogService.open(DialogNamePrompttComponent, {
+      context: {
+        bulkemail: this.selectedRows
+      }
+    });
+    // this.onSubmit(body);
+  }
 getCustomer() {
   this.user.getCustomer().subscribe((result) => {
     console.log("Customer result", result);
@@ -222,7 +229,7 @@ getNewCustomer() {
 
   onDeleteConfirm(event): void {
     // console.log(event, "event")
-    this.open3();
+    // this.open3(event.selected);
     var data = {"fullName" : event.newData.fullName,
     "mobile" : event.newData.mobile,
     "email" : event.newData.email,
@@ -237,15 +244,18 @@ getNewCustomer() {
     });
     
   }
+
   onUserRowSelect(event) {
-    this.selectedRows = event.selected;
-    console.log(this.selectedRows);
+    // console.log(event);
+  this.selectedRows=event.selected
+console.log(this.selectedRows);
+
+
+
     
 }
 
- 
-
-
+;
 
 
 }

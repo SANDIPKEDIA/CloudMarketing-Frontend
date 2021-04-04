@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../../../users.service';
+
 import {
   NbComponentStatus,
   NbGlobalLogicalPosition,
@@ -9,6 +10,7 @@ import {
   NbToastrService,
   NbToastrConfig,
 } from '@nebular/theme';
+
 
 
 
@@ -21,7 +23,7 @@ export class AddCusComponent {
 
   public asoList = [];
   myReactiveForm: FormGroup;
-  items = ['Pizza', 'Pasta', 'Parmesan'];
+  items = [];
   constructor(
     private user: UsersService, private toastrService: NbToastrService
   ) { }
@@ -35,7 +37,7 @@ export class AddCusComponent {
       id: new FormControl(''),
       web_url: new FormControl(''),
       website_name: new FormControl(''),
-      title: new FormControl(''),
+      title: new FormControl(this.items),
       description: new FormControl(''),
       owner_id: new FormControl(''),
       tag: new FormControl(''),
@@ -46,7 +48,7 @@ export class AddCusComponent {
     });
   }
  
-
+ 
   onSubmit() {
     this.user.saveSeo(this.myReactiveForm.value).subscribe((data) => {
       this.myReactiveForm.reset();
@@ -111,6 +113,21 @@ export class AddCusComponent {
       titleContent,
       config);
   }
+
+
+  onItemAdded(event){
+   var data =  event.newData.tag
+   this.items.push(data)
+  //  debugger
+  }
+
+
+
+
+
+
+
+
 
 
 }

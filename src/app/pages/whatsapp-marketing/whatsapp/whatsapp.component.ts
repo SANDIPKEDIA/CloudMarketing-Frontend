@@ -9,6 +9,7 @@ import {
   NbToastrService,
   NbToastrConfig,
 } from '@nebular/theme';
+import { messages } from '../../extra-components/chat/messages';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class WpComponent {
 
   public asoList=[];
   myReactiveForm: FormGroup;
-
+public whatsapp;
+public message;
   constructor(
     private user: UsersService,private toastrService: NbToastrService
   ) {}
@@ -31,29 +33,26 @@ export class WpComponent {
 
 
     this.myReactiveForm = new FormGroup({
-      id:new FormControl(''),
-      longdescription: new FormControl(''),
-      shortdescription:new FormControl(''),
-      screenshot: new FormControl(''),
-      owner_id: new FormControl(''),
-      app_id:new FormControl(''),
-      app_name: new FormControl(''),
-      tag: new FormControl(''),
-  
+     
+      number: new FormControl(''),
+      message: new FormControl(''),
+   
   
 
     });
   }
 
   onSubmit() {
-    this.user.saveAso(this.myReactiveForm.value).subscribe((data) => {
-      this.myReactiveForm.reset();
-      this.getAso();
-      this.makeToast();
+   
+      this.whatsapp = this.myReactiveForm.get('number').value;
+      this.message = this.myReactiveForm.get('message').value;
 
-    
-    });
+      var win = window.open(`https://api.whatsapp.com/send?phone=91+${this.whatsapp}&text=${this.message}&source=&data=`, '_blank');
+      this.myReactiveForm.reset();
+      
   }
+    
+  
   getAso() {
     this.user.getAso().subscribe((result) => {
       console.log("Aso result", result);
@@ -71,7 +70,7 @@ export class WpComponent {
   preventDuplicates = false;
   status: NbComponentStatus = 'success';
 
-  title = 'Aso Added';
+  title = '';
   content = `Successfully!`;
 
   types: NbComponentStatus[] = [

@@ -14,6 +14,7 @@ import { NbDialogService } from '@nebular/theme';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt.component';
+import { NumberCardModule } from '@swimlane/ngx-charts';
 // import { DialogNamePromptComponent } from '../../messagemanagement/send-messages/dialog-name-prompt/dialog-name-prompt.component';
 // import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt.component';
 
@@ -46,7 +47,7 @@ export class SendMsgComponent {
       id: new FormControl(''),
       fullName: new FormControl(''),
       email: new FormControl(''),
-      mobile: new FormControl(this.number),
+      mobile: new FormControl(),
       address: new FormControl(''),
       // number:new FormControl(this.number), 
       
@@ -66,9 +67,12 @@ export class SendMsgComponent {
   //   });
   // }
 
-  open3(){
-    this.dialogService.open(DialogNamePromptComponent)
-    // this.onSubmit(body);
+  open3(number:string){
+    this.dialogService.open(DialogNamePromptComponent, {
+      context: {
+        deviceMobile: number
+      }
+    });
   
   }
 
@@ -231,9 +235,9 @@ export class SendMsgComponent {
   };
 
   onDeleteConfirm(event): void {
-    localStorage.setItem("mobile",event.data.mobile)
+    this.open3(event.data.mobile)
 
-    this.open3();
+  
   }
   
   onUserRowSelect(event) {

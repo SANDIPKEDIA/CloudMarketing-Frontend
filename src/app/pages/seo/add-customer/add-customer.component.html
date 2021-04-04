@@ -1,4 +1,4 @@
-<div class="lists row">
+ <div class="lists row">
   <div class="col-md-12 col-lg-6 col-xxxl-6">
 
     <nb-card class="list-card">
@@ -13,7 +13,12 @@
             <input type="text" formControlName="web_url" nbInput fullWidth placeholder="Web Url">
           </div>
           <br>
+          <br>
 
+          <div class="form-group">
+            <tag-input [(ngModel)]='items'></tag-input>
+           </div>
+           <br>
           <div class="form-group">
             <input type="text" formControlName="title" nbInput fullWidth placeholder="Title">
           </div>
@@ -21,11 +26,7 @@
           <div class="form-group">
             <input type="text" formControlName="description" nbInput fullWidth placeholder="Description">
           </div>
-          <br>
-
-          <div class="form-group">
-            <input type="text" formControlName="tag" nbInput fullWidth placeholder="tag">
-           </div>
+         
        
           <br>
          
@@ -42,4 +43,4 @@
 
 
   
-
+ 
