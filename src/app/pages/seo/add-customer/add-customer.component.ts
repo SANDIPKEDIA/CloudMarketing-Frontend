@@ -23,7 +23,8 @@ export class AddCusComponent {
 
   public asoList = [];
   myReactiveForm: FormGroup;
-  items = [];
+  public items=[];
+
   constructor(
     private user: UsersService, private toastrService: NbToastrService
   ) { }
@@ -116,9 +117,13 @@ export class AddCusComponent {
 
 
   onItemAdded(event){
-   var data =  event.newData.tag
-   this.items.push(data)
-  //  debugger
+    var data =event.value
+    this.items.push[data]
+    console.log("items",this.items);
+    
+ 
+   
+ 
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, ɵCodegenComponentFactoryResolver,TemplateRef } from '@angular/core';
+import { Component, ɵCodegenComponentFactoryResolver, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../../../users.service';
 import { LocalDataSource } from 'ng2-smart-table';
@@ -18,6 +18,7 @@ import {
 } from '@nebular/theme';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfiniteListComponent } from '../../layout/infinite-list/infinite-list.component';
+import { threadId } from 'worker_threads';
 // import { DialogNamePromptComponent } from '../../modal-overlays/dialog/dialog-name-prompt/dialog-name-prompt.component';
 
 
@@ -33,20 +34,20 @@ export class SendBulkEmailsComponent {
   public list = [];
   public allList = [];
   source: LocalDataSource = new LocalDataSource();
-  public email=''
-  public selectedRows=[];
-  public arr=[];
+  public email = ''
+  public selectedRows = [];
+  public arr = [];
 
 
 
   constructor(
-    private user: UsersService, private toastrService: NbToastrService, private route: ActivatedRoute, private router: Router, private service: SmartTableData,private dialogService: NbDialogService
+    private user: UsersService, private toastrService: NbToastrService, private route: ActivatedRoute, private router: Router, private service: SmartTableData, private dialogService: NbDialogService
   ) { }
 
 
   ngOnInit() {
-    
-    
+
+
     this.getCustomer();
 
     this.myReactiveForm = new FormGroup({
@@ -72,60 +73,60 @@ export class SendBulkEmailsComponent {
   }
   open3() {
     // this.onUserRowSelect(event.selected);
-    console.log("this",this.selectedRows);
+
     this.dialogService.open(DialogNamePrompttComponent, {
       context: {
-        bulkemail: this.selectedRows
+        bulkemail: this.arr
       }
     });
     // this.onSubmit(body);
   }
-getCustomer() {
-  this.user.getCustomer().subscribe((result) => {
-    console.log("Customer result", result);
-    this.customerList = result["object"]['UserList'];
-    this.source.load(this.customerList);
-    // this.source.load(this.allList);
-    this.getNewCustomer();
+  getCustomer() {
+    this.user.getCustomer().subscribe((result) => {
+      console.log("Customer result", result);
+      this.customerList = result["object"]['UserList'];
+      this.source.load(this.customerList);
+      // this.source.load(this.allList);
+      this.getNewCustomer();
 
-    
-    
-  });
-}
 
-getNewCustomer() {
-  this.user.getNewCustomer().subscribe((result) => {
-     this.list = result["response"];
-    this.allList =  this.customerList.concat(this.list);
-    this.source.load(this.allList);
-    let all =this.allList.filter(function(result){
-      return result.email;
-    })
 
-    this.source.load(all);
+    });
+  }
+
+  getNewCustomer() {
+    this.user.getNewCustomer().subscribe((result) => {
+      this.list = result["response"];
+      this.allList = this.customerList.concat(this.list);
+      this.source.load(this.allList);
+      let all = this.allList.filter(function (result) {
+        return result.email;
+      })
+
+      this.source.load(all);
       // debugger
-    //  console.log("New Customer Result",this.allList);
-     
-    
-  });
-}
+      //  console.log("New Customer Result",this.allList);
+
+
+    });
+  }
 
 
   //smart
 
   settings = {
     selectMode: 'multi',
-// mode:'external',
-// addable: false,
-// actions: false,
-// hideSubHeader:true,
+    // mode:'external',
+    // addable: false,
+    // actions: false,
+    // hideSubHeader:true,
     add: {
       addButtonContent: '<i class="nb-email"></i><p></p>',
-      createButtonContent:'<i class="nb-checkmark"></i>',
-      cancelButtonContent:  '<i class="nb-close"></i>',
-    
-      hideSubFooter:true,
-      
+      createButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+
+      hideSubFooter: true,
+
       confirmCreate: true,
       // columns:{
       //   fullName: {
@@ -133,12 +134,12 @@ getNewCustomer() {
       //     type: 'Html',
       //     editable:false, 
       //       addable: false,
-            
+
       //       // edit:false
       //   },
 
       // }
-      
+
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
@@ -153,31 +154,31 @@ getNewCustomer() {
     },
     delete: {
       // deleteButtonContent: '<i class="nb-email"></i><p>Send Email</p>',
-      deleteButtonContent:' <p style="font-size:20px">Send Email <i class="nb-email"></i></p>',
+      deleteButtonContent: ' <p style="font-size:20px">Send Email <i class="nb-email"></i></p>',
 
       confirmDelete: true,
     },
 
     actions: {
       columnTitle: 'Send Email',
-     
+
       edit: false,
-      add:false,
-      delete:false,
-    
-
-    //   custom: [
-    //     { name: 'email', title: '<i class="nb-email"></i>' },
+      add: false,
+      delete: false,
 
 
-    // ],
-      
+      //   custom: [
+      //     { name: 'email', title: '<i class="nb-email"></i>' },
+
+
+      // ],
+
     },
 
-  remove:{
-    createButtonContent:true,
-  },
-      
+    remove: {
+      createButtonContent: true,
+    },
+
 
 
 
@@ -186,15 +187,15 @@ getNewCustomer() {
       //   title: 'ID',
       //   type: 'number',
       // },
-      
+
       fullName: {
         title: 'First Name',
         type: 'Html',
-        editable:false, 
-          addable: false,
-          hide:true,
-          
-          // edit:false
+        editable: false,
+        addable: false,
+        hide: true,
+
+        // edit:false
       },
       // lastName: {
       //   title: 'Last Name',
@@ -230,32 +231,39 @@ getNewCustomer() {
   onDeleteConfirm(event): void {
     // console.log(event, "event")
     // this.open3(event.selected);
-    var data = {"fullName" : event.newData.fullName,
-    "mobile" : event.newData.mobile,
-    "email" : event.newData.email,
-    "address": event.newData.address,
+    var data = {
+      "fullName": event.newData.fullName,
+      "mobile": event.newData.mobile,
+      "email": event.newData.email,
+      "address": event.newData.address,
 
     };
     this.email = event.newData.email
     this.user.Email(this.email).subscribe((result) => {
       this.getCustomer();
-  
-      
+
+
     });
-    
+
   }
 
   onUserRowSelect(event) {
     // console.log(event);
-  this.selectedRows=event.selected
-console.log(this.selectedRows);
+    for (var i = 0; i < event.selected.length; i++) {
+      this.selectedRows = event.selected[i].email
+
+      this.arr.push(this.selectedRows)
+
+
+    }
+    console.log("Emails Selected: ", this.arr);
 
 
 
-    
-}
 
-;
+  }
+
+
 
 
 }

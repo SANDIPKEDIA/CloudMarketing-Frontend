@@ -18,15 +18,24 @@ import {
 })
 export class ContactImportComponent {
 
-  public customerList=[];
+
+  public afuConfig = {
+    uploadAPI: {
+      url: "https://example-file-upload-api"
+    }
+  };
+
+
+  public url = ""
+  public customerList = [];
   myReactiveForm: FormGroup;
   shortLink: string = "";
   loading: boolean = false; // Flag variable
   file: File = null; // Variable to store file
 
   constructor(
-    private user: UsersService,private toastrService: NbToastrService
-  ) {}
+    private user: UsersService, private toastrService: NbToastrService
+  ) { }
 
 
   ngOnInit() {
@@ -34,35 +43,46 @@ export class ContactImportComponent {
 
 
     this.myReactiveForm = new FormGroup({
-      id:new FormControl(''),
+      id: new FormControl(''),
       fullName: new FormControl(''),
-      email:new FormControl(''),
+      email: new FormControl(''),
       mobile: new FormControl(''),
       address: new FormControl(''),
-  
+
 
     });
   }
 
   onChange(event) {
     this.file = event.target.files[0];
-}
+  }
 
-// onUpload() {
-//   this.loading = !this.loading;
-//   console.log(this.file);
-//   this.user.upload(this.file).subscribe(
-//       (event: any) => {
-//           if (typeof (event) === 'object') {
+  onselectFile(e) {
+    if (e.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (event: any) => {
+        this.url = event.taget.result;
+      }
+    }
+  }
 
-//               // Short link via api response
-//               this.shortLink = event.link;
 
-//               this.loading = false; // Flag variable 
-//           }
-//       }
-//   );
-// }
+  // onUpload() {
+  //   this.loading = !this.loading;
+  //   console.log(this.file);
+  //   this.user.upload(this.file).subscribe(
+  //       (event: any) => {
+  //           if (typeof (event) === 'object') {
+
+  //               // Short link via api response
+  //               this.shortLink = event.link;
+
+  //               this.loading = false; // Flag variable 
+  //           }
+  //       }
+  //   );
+  // }
 
   getCustomer() {
     this.user.getCustomer().subscribe((result) => {
@@ -85,25 +105,25 @@ export class ContactImportComponent {
   content = `Successfully!`;
 
   types: NbComponentStatus[] = [
-   
+
     'success',
-   
+
   ];
   positions: string[] = [
 
     NbGlobalPhysicalPosition.TOP_LEFT,
-   
+
   ];
 
 
-  
 
 
-//Toaster
+
+  //Toaster
   makeToast() {
-    this.showToast(this.status, this.title,this.content);
+    this.showToast(this.status, this.title, this.content);
   }
-  private showToast(type: NbComponentStatus, title: string,body:String) {
+  private showToast(type: NbComponentStatus, title: string, body: String) {
     const config = {
       status: type,
       destroyByClick: this.destroyByClick,
@@ -113,7 +133,7 @@ export class ContactImportComponent {
       preventDuplicates: this.preventDuplicates,
     };
     const titleContent = title ? `${title}` : '';
-    
+
     this.toastrService.show(
       body,
       titleContent,
@@ -121,8 +141,8 @@ export class ContactImportComponent {
   }
 
 
-  
+
 }
-  
+
 
 

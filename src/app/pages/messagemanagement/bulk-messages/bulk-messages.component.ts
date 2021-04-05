@@ -25,18 +25,19 @@ import { DialogNamePrompttComponent } from './dialog-name-prompt/dialog-name-pro
 })
 export class SendBulkMsgComponent {
 
-  public customerList=[];
+  public customerList = [];
   myReactiveForm: FormGroup;
   public list = [];
   public allList = [];
   public number;
   public selectedRows;
+  public arr = []
   source: LocalDataSource = new LocalDataSource();
 
   constructor(
-    private user: UsersService,private toastrService: NbToastrService,private route: ActivatedRoute, private router: Router, private service: SmartTableData,private dialogService: NbDialogService
-    
-  ) {}
+    private user: UsersService, private toastrService: NbToastrService, private route: ActivatedRoute, private router: Router, private service: SmartTableData, private dialogService: NbDialogService
+
+  ) { }
 
   ngOnInit() {
     this.getCustomer();
@@ -48,7 +49,7 @@ export class SendBulkMsgComponent {
       mobile: new FormControl(this.number),
       address: new FormControl(''),
       // number:new FormControl(this.number), 
-      
+
 
 
 
@@ -65,14 +66,14 @@ export class SendBulkMsgComponent {
   //   });
   // }
 
-  open3(token:string){
-    this.open3(this.selectedRows)
+  open3(token: string) {
+
     this.dialogService.open(DialogNamePrompttComponent, {
       context: {
-        devicetoken: token
+        bulkmessage: this.arr
       }
     });
-  
+
   }
 
   //Toaster
@@ -88,14 +89,14 @@ export class SendBulkMsgComponent {
   content = `Successfully!`;
 
   types: NbComponentStatus[] = [
-   
+
     'success',
-   
+
   ];
   positions: string[] = [
 
     NbGlobalPhysicalPosition.TOP_LEFT,
-   
+
   ];
 
   getCustomer() {
@@ -106,22 +107,22 @@ export class SendBulkMsgComponent {
       // this.source.load(this.allList);
       this.getNewCustomer();
 
-      
-      
+
+
     });
   }
 
   getNewCustomer() {
     this.user.getNewCustomer().subscribe((result) => {
-       this.list = result["response"];
-      this.allList =  this.customerList.concat(this.list);
+      this.list = result["response"];
+      this.allList = this.customerList.concat(this.list);
       this.source.load(this.allList);
-      let all =this.allList.filter(function(result){
+      let all = this.allList.filter(function (result) {
         return result.mobile;
       })
-  
+
       this.source.load(all);
-      
+
     });
   }
 
@@ -130,9 +131,9 @@ export class SendBulkMsgComponent {
 
   //Toaster
   makeToast() {
-    this.showToast(this.status, this.title,this.content);
+    this.showToast(this.status, this.title, this.content);
   }
-  private showToast(type: NbComponentStatus, title: string,body:String) {
+  private showToast(type: NbComponentStatus, title: string, body: String) {
     const config = {
       status: type,
       destroyByClick: this.destroyByClick,
@@ -142,16 +143,16 @@ export class SendBulkMsgComponent {
       preventDuplicates: this.preventDuplicates,
     };
     const titleContent = title ? `${title}` : '';
-    
+
     this.toastrService.show(
       body,
       titleContent,
       config);
   }
 
- 
+
   settings = {
-    
+
     selectMode: 'multi',
 
     add: {
@@ -172,20 +173,20 @@ export class SendBulkMsgComponent {
     },
     delete: {
       // deleteButtonContent: '<i class="nb-chat"></i><p>Send Message</p>',
-      deleteButtonContent:' <p style="font-size:20px">Send Message <i class="nb-paper-plane"></i></p>',
+      deleteButtonContent: ' <p style="font-size:20px">Send Message <i class="nb-paper-plane"></i></p>',
 
- 
+
       confirmDelete: true,
     },
 
     actions: {
       columnTitle: 'Send Message',
-      add: false, 
+      add: false,
       edit: false,
       content: false,
-      delete:false,
+      delete: false,
       defaultStyle: false
-      
+
 
 
 
@@ -198,16 +199,16 @@ export class SendBulkMsgComponent {
       //   title: 'ID',
       //   type: 'number',
       // },
-      
+
       // checkbox: {
       //   title: 'First Name',
       //   type: 'checkbox',
-      
+
       // },
       fullName: {
         title: 'First Name',
         type: 'string',
-      
+
       },
       // lastName: {
       //   title: 'Last Name',
@@ -227,37 +228,41 @@ export class SendBulkMsgComponent {
         type: 'string',
         // filter: false                 
       },
-      
+
 
     },
- 
+
   };
 
   // onDeleteConfirm(event): void {
-   
+
 
   //   this.open3(this.selectedRows);
   // }
-  
+
   onUserRowSelect(event) {
-    this.selectedRows = event.selected;
-    // this.open3(this.selectedRows)
-console.log("row",this.selectedRows);
+    for (var i = 0; i < event.selected.length; i++) {
+      this.selectedRows = event.selected[i].mobile
+      this.arr.push(this.selectedRows)
+    }
+    console.log("Numbers Selected", this.arr);
 
-   
-    
-    
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
 }
 
-
-
-
-  
-
-
-
-  
-}
-  
 
 

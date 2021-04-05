@@ -13,10 +13,10 @@
             <input type="text" formControlName="web_url" nbInput fullWidth placeholder="Web Url">
           </div>
           <br>
-          <br>
+       
 
           <div class="form-group">
-            <tag-input [(ngModel)]='items'></tag-input>
+            <tag-input formControlName="tag" theme='dark' [(ngModel)]='items' (onAdd)="onItemAdded($event)"></tag-input>
            </div>
            <br>
           <div class="form-group">

@@ -20,6 +20,7 @@ import {
   NbStepperModule,
   NbTabsetModule, 
 } from '@nebular/theme';
+import { AngularFileUploaderModule } from "angular-file-uploader";
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { FormsRoutingModule } from './forms-routing.module';
@@ -56,7 +57,8 @@ import { ContactImportComponent } from './contact-import/contact-import.componen
     FormsModule, 
     ReactiveFormsModule,
     // ngFormsModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    AngularFileUploaderModule
   ],
   declarations: [
     FormsComponent,

@@ -30,6 +30,7 @@ export class DialogNamePrompttComponent {
   
   ngOnInit() {
   
+    console.log("bulkemail",this.bulkemail);
     
     
     this.getNewCustomer();
@@ -50,16 +51,17 @@ this.myReactiveForm.get('email').setValue(this.bulkemail)
  
 
   onSubmit(body) {
-
-    let email = this.myReactiveForm.get("email").value;
+    let email = this.myReactiveForm.get('email').value;
     this.user.Email(email).subscribe((data) => {
       this.myReactiveForm.reset();
-      console.log("body",email);
+      console.log("Successfully Send Emails to those EmailIDs: ",email);
       this.makeToast();
-
     });
-  }
-
+    
+ 
+}
+  
+  
   getNewCustomer() {
     this.user.getNewCustomer().subscribe((result) => {
       this.list = result["response"];
@@ -73,13 +75,13 @@ this.myReactiveForm.get('email').setValue(this.bulkemail)
 
   config: NbToastrConfig;
   destroyByClick = true;
-  duration = 2000;
+  duration = 4000;
   hasIcon = true;
   position: NbGlobalPosition = NbGlobalPhysicalPosition.TOP_RIGHT;
   preventDuplicates = false;
   status: NbComponentStatus = 'success';
 
-  title = 'Message Send';
+  title = 'Emails Send';
   content = `Successfully!`;
 
   types: NbComponentStatus[] = [
