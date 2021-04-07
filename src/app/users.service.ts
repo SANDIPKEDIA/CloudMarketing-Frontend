@@ -112,4 +112,29 @@ export class UsersService {
 //     return this.http.post(this.baseApiUrl, formData)
 // }
 
+
+uploadFile(file)
+  {
+    console.log("service",file);
+    
+
+    // var formdata = new FormData();
+  
+    // Create formdata object and append the object
+    // file to the name 'Blob file'
+    // formdata.append("Blob File",file );
+    // debugger
+    let url=this.baseUrl + "/api/v1/fileupload/"
+    return this.http.post(url,file);
+    
+  }
+
+
+
+
+
+
+
+
+
 }

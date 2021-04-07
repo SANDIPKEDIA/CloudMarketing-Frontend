@@ -32,6 +32,7 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { CusListomponent } from './customer-list/customer-list.component';
 import { ContactImportComponent } from './contact-import/contact-import.component';
+import { HttpClientModule } from '@angular/common/http';
 // import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ContactImportComponent } from './contact-import/contact-import.componen
     ReactiveFormsModule,
     // ngFormsModule,
     Ng2SmartTableModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    HttpClientModule
   ],
   declarations: [
     FormsComponent,

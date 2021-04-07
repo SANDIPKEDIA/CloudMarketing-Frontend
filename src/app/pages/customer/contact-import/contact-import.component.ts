@@ -9,7 +9,8 @@ import {
   NbToastrService,
   NbToastrConfig,
 } from '@nebular/theme';
-
+import { HttpClient } from '@angular/common/http';
+// import { FileUploadService } from './file-upload.service';
 
 @Component({
   selector: 'ngx-contact-import',
@@ -19,13 +20,13 @@ import {
 export class ContactImportComponent {
 
 
-  public afuConfig = {
-    uploadAPI: {
-      url: "https://example-file-upload-api"
-    }
-  };
+  // public afuConfig = {
+  //   uploadAPI: {
+  //     url: "https://example-file-upload-api"
+  //   }
+  // };
 
-
+  selectedFile = null;
   public url = ""
   public customerList = [];
   myReactiveForm: FormGroup;
@@ -34,7 +35,7 @@ export class ContactImportComponent {
   file: File = null; // Variable to store file
 
   constructor(
-    private user: UsersService, private toastrService: NbToastrService
+    private user: UsersService, private toastrService: NbToastrService,private http:HttpClient,
   ) { }
 
 
@@ -53,37 +54,7 @@ export class ContactImportComponent {
     });
   }
 
-  onChange(event) {
-    this.file = event.target.files[0];
-  }
-
-  onselectFile(e) {
-    if (e.target.files) {
-      var reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
-      reader.onload = (event: any) => {
-        this.url = event.taget.result;
-      }
-    }
-  }
-
-
-  // onUpload() {
-  //   this.loading = !this.loading;
-  //   console.log(this.file);
-  //   this.user.upload(this.file).subscribe(
-  //       (event: any) => {
-  //           if (typeof (event) === 'object') {
-
-  //               // Short link via api response
-  //               this.shortLink = event.link;
-
-  //               this.loading = false; // Flag variable 
-  //           }
-  //       }
-  //   );
-  // }
-
+ 
   getCustomer() {
     this.user.getCustomer().subscribe((result) => {
       console.log("Customer result", result);
@@ -139,8 +110,21 @@ export class ContactImportComponent {
       titleContent,
       config);
   }
+  onChange(event) {
+    this.file = event.target.files[0];
+    
 
+    // debugger
+}
+onUpload() {
+  console.log(this.file);
+  let formData = new FormData();
+  formData.append('file', this.file);
 
+  this.user.uploadFile(formData).subscribe((result) => {
+    console.log("result",result);
+  });
+}
 
 }
 
