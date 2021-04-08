@@ -10,18 +10,18 @@
     </button>
 </div>
    -->
-   <div class="lists row">
+   <div class="list">
       <div class="col-md-12 col-lg-6 col-xxxl-6">
     
         <nb-card class="list-card">
-          <nb-card-header>Import Contact</nb-card-header>
+         <nb-card-header>Import Contact</nb-card-header>
           <nb-card-body>
             <form  class="editform-ui">
               <div class="form-group">
                 <input  class="form-control"  type="file" 
                 (change)="onChange($event)"> 
               </div>
-              <button type="submit" (click)="onUpload()" nbButton status="success">Upload</button>
+              <button  class="btn"  type="submit" (click)="onUpload()" nbButton status="success">Upload&nbsp;<i class="fa fa-upload" ></i></button>
             </form>
           </nb-card-body>
         </nb-card>

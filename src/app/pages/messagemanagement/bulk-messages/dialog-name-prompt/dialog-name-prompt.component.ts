@@ -46,14 +46,23 @@ export class DialogNamePrompttComponent {
       this.myReactiveForm.get('mobile').setValue(this.bulkmessage)
   }
   onSubmit(body) {
-    
-    let number = this.myReactiveForm.get("mobile").value;
-    this.user.Message(number).subscribe((data) => {
+    // let number = this.myReactiveForm.get("mobile").value;
+    // this.user.Message(number).subscribe((data) => {
+    //   this.myReactiveForm.reset();
+    //   console.log("body",number);
+    //   this.makeToast();
+    // });
+
+    this.bulkmessage.forEach((event)=>{
+      let number = event
+      // debugger
+    this.user.Message(event).subscribe((data) => {
       this.myReactiveForm.reset();
       console.log("body",number);
       this.makeToast();
 
     });
+  })
   }
 
   getNewCustomer() {
