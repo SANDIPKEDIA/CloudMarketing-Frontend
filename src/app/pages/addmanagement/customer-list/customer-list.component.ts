@@ -265,7 +265,7 @@ private showToast(type: NbComponentStatus, title: string,body:String) {
     titleContent,
     config);
 }
-
+//add one more toaster
 makeToast2() {
   this.showToast2(this.status, this.title,this.content);
 }
