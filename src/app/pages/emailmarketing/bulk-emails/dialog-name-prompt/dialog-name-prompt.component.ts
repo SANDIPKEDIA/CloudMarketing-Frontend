@@ -54,7 +54,7 @@ this.myReactiveForm.get('email').setValue(this.bulkemail)
     let email = this.myReactiveForm.get('email').value;
     this.user.Email(email).subscribe((data) => {
       this.myReactiveForm.reset();
-      console.log("Successfully Send Emails to those EmailIDs: ",email);
+      console.log("Successfully Send Emails to: ",email);
       this.makeToast();
     });
     

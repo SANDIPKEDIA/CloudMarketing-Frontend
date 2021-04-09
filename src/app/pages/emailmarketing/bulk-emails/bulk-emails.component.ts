@@ -73,7 +73,11 @@ export class SendBulkEmailsComponent {
   }
   open3() {
     // this.onUserRowSelect(event.selected);
-
+    if (this.arr.length==0) {
+      alert("Please Select a Email First")
+    
+      }
+    else{
     this.dialogService.open(DialogNamePrompttComponent, {
       context: {
         bulkemail: this.arr
@@ -81,6 +85,7 @@ export class SendBulkEmailsComponent {
     });
     // this.onSubmit(body);
   }
+}
   getCustomer() {
     this.user.getCustomer().subscribe((result) => {
       console.log("Customer result", result);
@@ -249,19 +254,17 @@ export class SendBulkEmailsComponent {
 
   onUserRowSelect(event) {
     // console.log(event);
-    for (var i = 0; i < event.selected.length; i++) {
-      this.selectedRows = event.selected[i].email
-
+    this.arr=[]
+    event.selected.forEach((val)=>{
+      this.selectedRows = val.email
       this.arr.push(this.selectedRows)
-
-
-    }
-    console.log("Emails Selected: ", this.arr);
-
-
-
+    })
+    console.log("Emails Selected: ",this.arr);
 
   }
+
+
+  
 
 
 

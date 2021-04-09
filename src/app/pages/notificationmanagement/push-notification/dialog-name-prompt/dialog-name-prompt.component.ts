@@ -49,7 +49,7 @@ export class DialogNamePromptComponent {
 
   onSubmit(body) {
     let number = this.myReactiveForm.get("number").value;
-    this.user.Message(number).subscribe((data) => {
+    this.user.PushNotification(number).subscribe((data) => {
       this.myReactiveForm.reset();
       console.log(number);
       this.makeToast();

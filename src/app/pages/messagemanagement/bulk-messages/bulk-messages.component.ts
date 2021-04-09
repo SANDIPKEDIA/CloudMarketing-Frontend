@@ -67,13 +67,17 @@ export class SendBulkMsgComponent {
   // }
 
   open3(token: string) {
-
-    this.dialogService.open(DialogNamePrompttComponent, {
-      context: {
-        bulkmessage: this.arr
-      }
-    });
-
+    if (this.arr.length==0) {
+    alert("Please Select a Number First")
+  
+    }
+     else{ 
+      this.dialogService.open(DialogNamePrompttComponent, {
+        context: {
+          bulkmessage: this.arr
+        }
+      });
+     }
   }
 
   //Toaster
@@ -241,16 +245,12 @@ export class SendBulkMsgComponent {
   // }
 
   onUserRowSelect(event) {
-    for (var i = 0; i < event.selected.length; i++) {
-      this.selectedRows = event.selected[i].mobile
+    this.arr = []
+    event.selected.forEach((val) => {
+      this.selectedRows = val.mobile
       this.arr.push(this.selectedRows)
-    }
-    console.log("Numbers Selected", this.arr);
-
-
-
-
-
+    })
+    console.log("Numbers Selected: ", this.arr);
 
   }
 

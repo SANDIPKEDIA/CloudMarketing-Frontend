@@ -149,19 +149,19 @@ private showToast2(type: NbComponentStatus, title: string,body:String) {
     formData.append('file', this.file);
     this.user.uploadFile(formData).subscribe((result) => {
       console.log("result", result);
-      this.makeToast2();
+      // this.makeToast2();
       this.csvRead = result['response']
       console.log("After Reading csv file", this.csvRead);
-      this.csvRead.forEach((val) => {
+      // this.csvRead.forEach((val) => {
 
-        this.Email = val.Email;
-        this.number = val.Phone;
+      //   this.Email = val.Email;
+      //   this.number = val.Phone;
         
-        // // debugger
+      //   // // debugger
         
 
         this.customerAdd();
-      })
+      // })
 
     });
   }
